@@ -1,24 +1,8 @@
-<div align="center">
-  <a href="https://www.monocloud.com?utm_source=github&utm_medium=monocloud_js" target="_blank" rel="noopener noreferrer">
-    <picture>
-      <img src="https://raw.githubusercontent.com/monocld/monocloud-management-js/refs/heads/main/MonoCloud.png" height="100" alt="MonoCloud Logo">
-    </picture>
-  </a>
-  <p>Secure, simple auth for everything</p>
-  <img src="https://img.shields.io/github/v/release/monocld/monocloud-management-js" alt="Release" />
-  <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/:license-MIT-blue.svg?style=flat" alt="License: MIT" />
-  </a>
-  <a href="https://github.com/monocld/monocloud-management-js/actions/workflows/release.yaml">
-    <img src="https://github.com/monocld/monocloud-management-js/actions/workflows/release.yaml/badge.svg" alt="Build Status" />
-  </a>
-</div>
-
-<br /><br />
+![MonoCloud Logo](https://raw.githubusercontent.com/monocld/monocloud-management-dotnet/refs/heads/main/MonoCloud.png)
 
 ## Introduction
 
-**MonoCloud Management SDK for JavaScript – programmatically manage apps, policies, configurations, and users via the MonoCloud Management APIs.**
+**MonoCloud Management Admin SDK for Javascript – programmatically manage apps, policies, configurations via the MonoCloud Management Admin APIs.**
 
 [MonoCloud](https://www.monocloud.com) is a modern, developer-friendly Identity & Access Management platform.
 
@@ -39,15 +23,13 @@ This SDK provides a full-featured, typed JavaScript client for interacting with 
 - A **MonoCloud tenant**
 - A **Management API key** with appropriate permissions
 
-## Admin API
-
-### 📦 Installation
+## 📦 Installation
 
 ```bash
 npm install @monocloud/management-admin
 ```
 
-### Usage
+## Usage
 
 ```typescript
 const adminClient = MonoCloudAdminClient.init({
@@ -75,40 +57,6 @@ const result = await adminClient.clients.getAllClients(
 
 Explore further operations (clients, options, trust stores, etc.) using the same patterns.
 See: https://www.monocloud.com/docs
-
-## Identity API
-
-### 📦 Installation
-
-```bash
-npm install @monocloud/management-identity
-```
-
-### Usage
-
-```typescript
-const identityClient = MonoCloudIdentityClient.init({
-  domain: 'https://<your-tenant-domain>',
-  apiKey: '<your-api-key>',
-});
-```
-
-⚠️ **Security Note:** Do not hardcode your API key. It is recommended to load it from an environment variable. See: [`monocloud-identity-client`](https://github.com/monocld/monocloud-management-js/blob/main/packages/identity/src/monocloud-identity-client.ts)
-
-### ✨ Usage Examples
-
-The SDK closely mirrors the REST API structure — clients are organized by users and groups.
-
-#### 🔍 Get all users
-
-```typescript
-const result = await identityClient.users.getAllUsers(
-    page: 1,
-    size: 10,
-    filter: "bob",
-    sort: "given_name:1"
-);
-```
 
 Explore further operations at https://www.monocloud.com/docs
 
