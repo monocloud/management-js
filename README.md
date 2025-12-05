@@ -9,8 +9,8 @@
   <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/:license-MIT-blue.svg?style=flat" alt="License: MIT" />
   </a>
-  <a href="https://github.com/monocld/monocloud-management-js/actions/workflows/release.yaml">
-    <img src="https://github.com/monocld/monocloud-management-js/actions/workflows/release.yaml/badge.svg" alt="Build Status" />
+  <a href="https://github.com/monocld/monocloud-management-js/actions/workflows/build.yml">
+    <img src="https://github.com/monocld/monocloud-management-js/actions/workflows/build.yml/badge.svg" alt="Build Status" />
   </a>
 </div>
 
