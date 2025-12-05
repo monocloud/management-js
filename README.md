@@ -5,7 +5,7 @@
     </picture>
   </a>
   <p>Secure, simple auth for everything</p>
-  <img src="https://img.shields.io/github/v/release/monocld/monocloud-management-js" alt="Release" />
+  <img src="https://img.shields.io/npm/v/@monocloud/management-core" alt="NPM" />
   <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/:license-MIT-blue.svg?style=flat" alt="License: MIT" />
   </a>
