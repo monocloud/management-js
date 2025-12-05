@@ -110,7 +110,7 @@ jobs:
           CHANGELOG_FILE: 'packages/core/CHANGELOG.md'
         run: |
           LOG_CONTENT=$(sed -n "/^## $TARGET_VERSION\$/,/^## /{/^## $TARGET_VERSION\$/d; /^## /d; p;}" $CHANGELOG_FILE)
-          CLEAN_LOG_CONTENT=$(echo "$LOG_CONTENT" | sed 's/^[ \t]*//;s/[ \t]*$//' | sed '/^$/d')
+          CLEAN_LOG_CONTENT=$(echo "$LOG_CONTENT" | sed 's/[ \t]*$//' | sed '/^$/d')
           echo "changelog_content<<EOF" >> $GITHUB_OUTPUT
           echo "$CLEAN_LOG_CONTENT" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
@@ -122,7 +122,7 @@ jobs:
           CHANGELOG_FILE: 'packages/admin/CHANGELOG.md'
         run: |
           LOG_CONTENT=$(sed -n "/^## $TARGET_VERSION\$/,/^## /{/^## $TARGET_VERSION\$/d; /^## /d; p;}" $CHANGELOG_FILE)
-          CLEAN_LOG_CONTENT=$(echo "$LOG_CONTENT" | sed 's/^[ \t]*//;s/[ \t]*$//' | sed '/^$/d')
+          CLEAN_LOG_CONTENT=$(echo "$LOG_CONTENT" | sed 's/[ \t]*$//' | sed '/^$/d')
           echo "changelog_content<<EOF" >> $GITHUB_OUTPUT
           echo "$CLEAN_LOG_CONTENT" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
@@ -134,7 +134,7 @@ jobs:
           CHANGELOG_FILE: 'packages/identity/CHANGELOG.md'
         run: |
           LOG_CONTENT=$(sed -n "/^## $TARGET_VERSION\$/,/^## /{/^## $TARGET_VERSION\$/d; /^## /d; p;}" $CHANGELOG_FILE)
-          CLEAN_LOG_CONTENT=$(echo "$LOG_CONTENT" | sed 's/^[ \t]*//;s/[ \t]*$//' | sed '/^$/d')
+          CLEAN_LOG_CONTENT=$(echo "$LOG_CONTENT" | sed 's/[ \t]*$//' | sed '/^$/d')
           echo "changelog_content<<EOF" >> $GITHUB_OUTPUT
           echo "$CLEAN_LOG_CONTENT" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
@@ -149,11 +149,11 @@ jobs:
           body=""
 
           if [ -n "$CORE_CHANGELOG" ]; then
-            body="${body}### 📦 Core"$'\n'"$CORE_CHANGELOG"$'\n\n'
+            body="${body}### 📦 Core"$'\n'"$CORE_CHANGELOG"$'\n\n\n'
           fi
 
           if [ -n "$ADMIN_CHANGELOG" ]; then
-            body="${body}### 💻 Admin"$'\n'"$ADMIN_CHANGELOG"$'\n\n'
+            body="${body}### 💻 Admin"$'\n'"$ADMIN_CHANGELOG"$'\n\n\n'
           fi
 
           if [ -n "$IDENTITY_CHANGELOG" ]; then
