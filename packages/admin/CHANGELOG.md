@@ -1,5 +1,12 @@
 # @monocloud/management-admin
 
+## 0.1.5
+
+### Patch Changes
+
+- 2813bc2: THis is an update for the admin api
+  - @monocloud/management-core@0.1.5
+
 ## 0.1.4
 
 ### Patch Changes
