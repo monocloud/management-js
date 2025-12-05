@@ -6,8 +6,7 @@
     "build": "turbo run build",
     "lint": "turbo run lint:ts && turbo run lint:es -- --fix",
     "test": "turbo run test",
-    "changeset:release": "changeset publish && git push --follow-tags",
-    "changeset:version": "changeset version && pnpm install --lockfile-only --engine-strict=false"
+    "changeset": "changeset"
   },
   "devDependencies": {
     "@changesets/cli": "2.29.8",
