@@ -141,32 +141,30 @@ jobs:
 
       - name: Build Release Body
         id: build_body
-        if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'changeset-release/main' && needs.release.outputs.was_published == 'true'
+        env:
+          CORE_CHANGELOG: ${{ steps.extract_changelog_core.outputs.changelog_content }}
+          ADMIN_CHANGELOG: ${{ steps.extract_changelog_admin.outputs.changelog_content }}
+          IDENTITY_CHANGELOG: ${{ steps.extract_changelog_identity.outputs.changelog_content }}
         run: |
-          echo "body=" >> $GITHUB_OUTPUT
-          if [ -n "${{ steps.extract_changelog_core.outputs.changelog_content }}" ]; then
-            {
-              echo "### 📦 Core"
-              echo "${{ steps.extract_changelog_core.outputs.changelog_content }}"
-              echo ""
-            } >> $GITHUB_OUTPUT
+          body=""
+
+          if [ -n "$CORE_CHANGELOG" ]; then
+            body="${body}### 📦 Core"$'\n'"$CORE_CHANGELOG"$'\n\n'
           fi
 
-          if [ -n "${{ steps.extract_changelog_admin.outputs.changelog_content }}" ]; then
-            {
-              echo "### 💻 Admin"
-              echo "${{ steps.extract_changelog_admin.outputs.changelog_content }}"
-              echo ""
-            } >> $GITHUB_OUTPUT
+          if [ -n "$ADMIN_CHANGELOG" ]; then
+            body="${body}### 💻 Admin"$'\n'"$ADMIN_CHANGELOG"$'\n\n'
           fi
 
-          if [ -n "${{ steps.extract_changelog_identity.outputs.changelog_content }}" ]; then
-            {
-              echo "### 👤 Identity"
-              echo "${{ steps.extract_changelog_identity.outputs.changelog_content }}"
-              echo ""
-            } >> $GITHUB_OUTPUT
+          if [ -n "$IDENTITY_CHANGELOG" ]; then
+            body="${body}### 👤 Identity"$'\n'"$IDENTITY_CHANGELOG"$'\n\n'
           fi
+
+          {
+            echo 'body<<EOF'
+            printf '%s\n' "$body"
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
 
       - name: Create GitHub Release
         if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'changeset-release/main' && needs.release.outputs.was_published == 'true'
