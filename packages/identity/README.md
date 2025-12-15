@@ -38,7 +38,7 @@ const identityClient = MonoCloudIdentityClient.init({
 });
 ```
 
-⚠️ **Security Note:** Do not hardcode your API key. It is recommended to load it from an environment variable. See: [`monocloud-identity-client`](https://github.com/monocld/monocloud-management-js/blob/main/packages/identity/src/monocloud-identity-client.ts)
+⚠️ **Security Note:** Do not hardcode your API key. It is recommended to load it from an environment variable. See: [`monocloud-identity-client`](https://github.com/monocld/management-js/blob/main/packages/identity/src/monocloud-identity-client.ts)
 
 ### ✨ Usage Examples
 
@@ -70,4 +70,4 @@ Do **not** report security issues publicly. Please follow the contact instructio
 
 ## 📄 License
 
-Licensed under the **MIT License**. See the included [`LICENSE`](https://github.com/monocld/monocloud-management-js/blob/main/LICENSE) file.
+Licensed under the **MIT License**. See the included [`LICENSE`](https://github.com/monocld/management-js/blob/main/LICENSE) file.

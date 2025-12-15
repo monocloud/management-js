@@ -11,11 +11,11 @@
   ],
   "homepage": "https://www.monocloud.com",
   "bugs": {
-    "url": "https://github.com/monocld/monocloud-management-js/issues"
+    "url": "https://github.com/monocld/management-js/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/monocld/monocloud-management-js.git",
+    "url": "git+https://github.com/monocld/management-js.git",
     "directory": "packages/identity"
   },
   "license": "MIT",
