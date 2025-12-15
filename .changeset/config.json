@@ -8,7 +8,7 @@
     "@monocloud/management-identity"
   ]],
   "linked": [],
-  "access": "restricted",
+  "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "snapshot": {
