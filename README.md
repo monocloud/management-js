@@ -1,7 +1,7 @@
 <div align="center">
   <a href="https://www.monocloud.com?utm_source=github&utm_medium=monocloud_js" target="_blank" rel="noopener noreferrer">
     <picture>
-      <img src="https://raw.githubusercontent.com/monocld/monocloud-management-js/refs/heads/main/MonoCloud.png" height="100" alt="MonoCloud Logo">
+      <img src="https://raw.githubusercontent.com/monocld/management-js/refs/heads/main/MonoCloud.png" height="100" alt="MonoCloud Logo">
     </picture>
   </a>
   <p>Secure, simple auth for everything</p>
@@ -9,8 +9,8 @@
   <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/:license-MIT-blue.svg?style=flat" alt="License: MIT" />
   </a>
-  <a href="https://github.com/monocld/monocloud-management-js/actions/workflows/build.yml">
-    <img src="https://github.com/monocld/monocloud-management-js/actions/workflows/build.yml/badge.svg" alt="Build Status" />
+  <a href="https://github.com/monocld/management-js/actions/workflows/build.yml">
+    <img src="https://github.com/monocld/management-js/actions/workflows/build.yml/badge.svg" alt="Build Status" />
   </a>
 </div>
 
@@ -56,7 +56,7 @@ const adminClient = MonoCloudAdminClient.init({
 });
 ```
 
-⚠️ **Security Note:** Do not hardcode your API key. It is recommended to load it from an environment variable. See: [`monocloud-admin-client`](https://github.com/monocld/monocloud-management-js/blob/main/packages/admin/src/monocloud-admin-client.ts)
+⚠️ **Security Note:** Do not hardcode your API key. It is recommended to load it from an environment variable. See: [`monocloud-admin-client`](https://github.com/monocld/management-js/blob/main/packages/admin/src/monocloud-admin-client.ts)
 
 ### ✨ Usage Examples
 
@@ -93,7 +93,7 @@ const identityClient = MonoCloudIdentityClient.init({
 });
 ```
 
-⚠️ **Security Note:** Do not hardcode your API key. It is recommended to load it from an environment variable. See: [`monocloud-identity-client`](https://github.com/monocld/monocloud-management-js/blob/main/packages/identity/src/monocloud-identity-client.ts)
+⚠️ **Security Note:** Do not hardcode your API key. It is recommended to load it from an environment variable. See: [`monocloud-identity-client`](https://github.com/monocld/management-js/blob/main/packages/identity/src/monocloud-identity-client.ts)
 
 ### ✨ Usage Examples
 
@@ -125,4 +125,4 @@ Do **not** report security issues publicly. Please follow the contact instructio
 
 ## 📄 License
 
-Licensed under the **MIT License**. See the included [`LICENSE`](https://github.com/monocld/monocloud-management-js/blob/main/LICENSE) file.
+Licensed under the **MIT License**. See the included [`LICENSE`](https://github.com/monocld/management-js/blob/main/LICENSE) file.

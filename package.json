@@ -1,5 +1,5 @@
 {
-  "name": "@monocloud/monocloud-management-js",
+  "name": "@monocloud/management-js",
   "version": "0.0.0",
   "private": true,
   "scripts": {

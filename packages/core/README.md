@@ -1,7 +1,7 @@
 <div align="center">
   <a href="https://www.monocloud.com?utm_source=github&utm_medium=monocloud_js" target="_blank" rel="noopener noreferrer">
     <picture>
-      <img src="https://raw.githubusercontent.com/monocld/monocloud-management-js/refs/heads/main/MonoCloud.png" height="100" alt="MonoCloud Logo">
+      <img src="https://raw.githubusercontent.com/monocld/management-js/refs/heads/main/MonoCloud.png" height="100" alt="MonoCloud Logo">
     </picture>
   </a>
   <p>Secure, simple auth for everything</p>
@@ -38,4 +38,4 @@ Do **not** report security issues publicly. Please follow the contact instructio
 
 ## 📄 License
 
-Licensed under the **MIT License**. See the included [`LICENSE`](https://github.com/monocld/monocloud-management-js/blob/main/LICENSE) file.
+Licensed under the **MIT License**. See the included [`LICENSE`](https://github.com/monocld/management-js/blob/main/LICENSE) file.
