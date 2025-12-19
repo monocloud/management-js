@@ -53,6 +53,12 @@ export interface ApiResource {
    */
   require_exclusive_token: boolean;
   /**
+   * Specifies whether the access token for the resource can be used at the userinfo endpoint.
+   * @type {boolean}
+   * @memberof ApiResource
+   */
+  enable_identity_access: boolean;
+  /**
    * List of associated user claim types that should be included in the Access token.
    * @type {string[]}
    * @memberof ApiResource

@@ -243,6 +243,12 @@ export interface CreateClientRequest {
    */
   update_access_token_claims_on_refresh?: boolean;
   /**
+   * Specifies whether the access token scopes should include the offline_access scope when the client requests it.
+   * @type {boolean}
+   * @memberof CreateClientRequest
+   */
+  emit_offline_access_scope_in_access_token?: boolean;
+  /**
    * Specifies how the refresh token expires
    * @type {RefreshTokenExpirationTypes}
    * @memberof CreateClientRequest

@@ -121,6 +121,10 @@ export const TechTypes = {
    *
    */
   Arduino: 'arduino',
+  /**
+   *
+   */
+  Astro: 'astro',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
