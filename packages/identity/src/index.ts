@@ -4,7 +4,7 @@ import {
   MonoCloudException,
   MonoCloudBadRequestException,
   MonoCloudConflictException,
-  MonoCloudErrorCodeValidationException,
+  MonoCloudIdentityValidationException,
   MonoCloudForbiddenException,
   MonoCloudKeyValidationException,
   MonoCloudModelStateException,
@@ -13,20 +13,20 @@ import {
   MonoCloudResourceExhaustedException,
   MonoCloudServerException,
   MonoCloudUnauthorizedException,
-  ErrorCodeValidationError,
-  ErrorCodeValidationProblemDetails,
+  IdentityError,
+  IdentityValidationProblemDetails,
   KeyValidationProblemDetails,
   Fetcher,
 } from '@monocloud/management-core';
 import { MonoCloudIdentityClient } from './monocloud-identity-client';
 
 export { MonoCloudIdentityClient, MonoCloudResponse };
-export type { MonoCloudConfig, ErrorCodeValidationError, Fetcher };
+export type { MonoCloudConfig, IdentityError, Fetcher };
 export {
   MonoCloudException,
   MonoCloudBadRequestException,
   MonoCloudConflictException,
-  MonoCloudErrorCodeValidationException,
+  MonoCloudIdentityValidationException,
   MonoCloudForbiddenException,
   MonoCloudKeyValidationException,
   MonoCloudModelStateException,
@@ -35,7 +35,7 @@ export {
   MonoCloudResourceExhaustedException,
   MonoCloudServerException,
   MonoCloudUnauthorizedException,
-  ErrorCodeValidationProblemDetails,
+  IdentityValidationProblemDetails,
   KeyValidationProblemDetails,
 };
 export * from './clients';

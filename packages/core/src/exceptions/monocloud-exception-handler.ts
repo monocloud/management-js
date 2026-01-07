@@ -1,9 +1,9 @@
-import { ErrorCodeValidationProblemDetails } from '../models/error-code-validation-problem-details';
+import { IdentityValidationProblemDetails } from '../models/identity-validation-problem-details';
 import { KeyValidationProblemDetails } from '../models/key-validation-problem-details';
 import { ProblemDetails } from '../models/problem-details';
 import { MonoCloudBadRequestException } from './monocloud-bad-request-exception';
 import { MonoCloudConflictException } from './monocloud-conflict-exception';
-import { MonoCloudErrorCodeValidationException } from './monocloud-error-code-validation-exception';
+import { MonoCloudIdentityValidationException } from './monocloud-identity-validation-exception';
 import { MonoCloudException } from './monocloud-exception';
 import { MonoCloudKeyValidationException } from './monocloud-key-validation-exception';
 import { MonoCloudModelStateException } from './monocloud-model-state-exception';
@@ -34,8 +34,8 @@ export class MonoCloudExceptionHandler {
       case 409:
         throw new MonoCloudConflictException(problemDetails);
       case 422:
-        if (problemDetails instanceof ErrorCodeValidationProblemDetails) {
-          throw new MonoCloudErrorCodeValidationException(problemDetails);
+        if (problemDetails instanceof IdentityValidationProblemDetails) {
+          throw new MonoCloudIdentityValidationException(problemDetails);
         }
 
         if (problemDetails instanceof KeyValidationProblemDetails) {
