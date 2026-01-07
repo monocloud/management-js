@@ -27,6 +27,7 @@ This SDK provides a full-featured, typed JavaScript client for interacting with 
 ## 📘 Documentation
 
 - **Documentation:** [https://www.monocloud.com/docs](https://www.monocloud.com/docs?utm_source=github&utm_medium=management_js)
+- **API Reference:** [https://monocloud.github.io/management-js](https://monocloud.github.io/management-js?utm_source=github&utm_medium=management_js)
 
 ## Supported Platforms
 
