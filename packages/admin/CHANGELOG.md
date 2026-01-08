@@ -1,5 +1,13 @@
 # @monocloud/management-admin
 
+## 0.1.4
+
+### Patch Changes
+
+- 4f165cc: Added documentation links to README.md
+- Updated dependencies [4f165cc]
+  - @monocloud/management-core@0.1.4
+
 ## 0.1.3
 
 ### Patch Changes
