@@ -3,7 +3,7 @@ import nock from 'nock';
 import {
   MonoCloudAdminClient,
   MonoCloudBadRequestException,
-  MonoCloudErrorCodeValidationException,
+  MonoCloudIdentityValidationException,
   MonoCloudKeyValidationException,
   MonoCloudServerException,
   CreateClientRequest,
@@ -135,7 +135,6 @@ describe('MonoCloud Admin SDK Tests', () => {
             code: 'PasswordRequiresUpper',
             description:
               "Passwords must have at least one uppercase ('A'-'Z').",
-            field: 'password',
           },
         ],
         traceId: '00-cd3f24e893675e2dae242875e99e7c85-296286fe1c04c085-01',
@@ -147,25 +146,22 @@ describe('MonoCloud Admin SDK Tests', () => {
       await client.clients.createClient({} as any);
       throw new Error('Invalid');
     } catch (error: unknown) {
-      expect(error).toBeInstanceOf(MonoCloudErrorCodeValidationException);
-      const err = error as MonoCloudErrorCodeValidationException;
+      expect(error).toBeInstanceOf(MonoCloudIdentityValidationException);
+      const err = error as MonoCloudIdentityValidationException;
       expect(err.message).toContain('Unprocessable Entity');
       expect(err.errors.length).toBe(3);
       expect(err.errors[0].code).toBe('PasswordTooShort');
       expect(err.errors[0].description).toBe(
         'Passwords must be at least 8 characters.'
       );
-      expect(err.errors[0].field).toBeUndefined();
       expect(err.errors[1].code).toBe('PasswordRequiresNonAlphanumeric');
       expect(err.errors[1].description).toBe(
         'Passwords must have at least one non alphanumeric character.'
       );
-      expect(err.errors[1].field).toBeUndefined();
       expect(err.errors[2].code).toBe('PasswordRequiresUpper');
       expect(err.errors[2].description).toBe(
         "Passwords must have at least one uppercase ('A'-'Z')."
       );
-      expect(err.errors[2].field).toBe('password');
       expect(err.response).not.toBeFalsy();
       expect(err.response!.type).toBe(
         'https://httpstatuses.io/422#identity-validation-error'

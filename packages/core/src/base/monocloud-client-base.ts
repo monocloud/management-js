@@ -5,7 +5,7 @@ import { MonoCloudPageResponse } from '../models/monocloud-page-response';
 import { PageModel } from '../models/page-model';
 import { ProblemDetails } from '../models/problem-details';
 import { ValidationExceptionTypes } from '../exceptions/validation-exception-types';
-import { ErrorCodeValidationProblemDetails } from '../models/error-code-validation-problem-details';
+import { IdentityValidationProblemDetails } from '../models/identity-validation-problem-details';
 import { KeyValidationProblemDetails } from '../models/key-validation-problem-details';
 import { MonoCloudExceptionHandler } from '../exceptions/monocloud-exception-handler';
 import { MonoCloudRequest } from '../models/monocloud-request';
@@ -147,7 +147,7 @@ export abstract class MonoCloudClientBase {
         : undefined;
 
       if (result?.type === ValidationExceptionTypes.IdentityValidationError) {
-        result = new ErrorCodeValidationProblemDetails(result);
+        result = new IdentityValidationProblemDetails(result);
       }
 
       if (result?.type === ValidationExceptionTypes.ValidationError) {
