@@ -1,5 +1,5 @@
 /**
- * The Update Username Request.
+ * Update Username Request: Used to add a new username or update the existing one for a user account.
  * @export
  * @interface UpdateUsernameRequest
  */

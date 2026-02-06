@@ -6,175 +6,175 @@ import { UserPhone } from './user-phone';
 import { UserUsername } from './user-username';
 
 /**
- * The User Response
+ * User: Represents a user account returned by the operation.
  * @export
  * @interface User
  */
 export interface User {
   /**
-   * Unique identifier of the user
+   * The unique identifier of the user.
    * @type {string}
    * @memberof User
    */
   user_id: string;
   /**
-   * Specifies whether the account has been disabled
+   * Indicates whether the account has been disabled.
    * @type {boolean}
    * @memberof User
    */
   disabled: boolean;
   /**
-   * List of providers that the user account is connected to
+   * Connections linked to this user.
    * @type {UserConnection[]}
    * @memberof User
    */
   connections: UserConnection[];
   /**
-   * User\'s Claims
+   * Claims associated with the user.
    * @type {{ [key: string]: any; }}
    * @memberof User
    */
   claims: Record<string, any>;
   /**
-   * User\'s Public Data
+   * The public data associated with the user\'s account.
    * @type {{ [key: string]: any; }}
    * @memberof User
    */
   public_data: Record<string, any>;
   /**
-   * User\'s Private Data
+   * The private data associated with the user\'s account.
    * @type {{ [key: string]: any; }}
    * @memberof User
    */
   private_data: Record<string, any>;
   /**
-   * List of registered emails of user
+   * List of registered emails of the user.
    * @type {UserEmail[]}
    * @memberof User
    */
   emails: UserEmail[];
   /**
-   * List of registered phones of user
+   * List of registered phones of the user.
    * @type {UserPhone[]}
    * @memberof User
    */
   phone_numbers: UserPhone[];
   /**
-   * List of registered passkeys of user
+   * List of registered passkeys of the user.
    * @type {UserPasskey[]}
    * @memberof User
    */
   passkeys: UserPasskey[];
   /**
-   * A flag indicating that the user must change their password on next sign-in
+   * A flag indicating whether the user must change their password on next sign-in.
    * @type {boolean}
    * @memberof User
    */
   force_password_reset: boolean;
   /**
-   * List of registered external providers of user
+   * External provider profiles linked to this user.
    * @type {UserExternalProvider[]}
    * @memberof User
    */
   external_providers: UserExternalProvider[];
   /**
-   * Specifies the creation time of the user (in Epoch)
+   * Specifies the creation time of the user (in Epoch).
    * @type {number}
    * @memberof User
    */
   creation_time: number;
   /**
-   * Specifies the last update time of the user (in Epoch)
+   * Specifies the last update time of the user (in Epoch).
    * @type {number}
    * @memberof User
    */
   last_updated: number;
   /**
-   * Registered username of the user.
+   * Registered username for the user.
    * @type {UserUsername}
    * @memberof User
    */
   username?: UserUsername | null;
   /**
-   * Specifies whether the user has a password.
+   * Indicates whether the user has a password set.
    * @type {boolean}
    * @memberof User
    */
   has_password: boolean;
   /**
-   * Specifies the time (in Epoch) of last password update.
+   * Specifies the time of the last password update (in Epoch).
    * @type {number}
    * @memberof User
    */
   password_updated_at?: number | null;
   /**
-   * Specifies the time (in Epoch) at which the user will be unblocked.
+   * Specifies the time at which the user will be unblocked (in Epoch).
    * @type {number}
    * @memberof User
    */
   block_until?: number | null;
   /**
-   * Total number of sign-in failures since the last sign-in was successful.
+   * Consecutive sign-in failures since the last successful sign-in.
    * @type {number}
    * @memberof User
    */
   failure_count: number;
   /**
-   * Total number of sign-in attempts.
+   * Total sign-in attempts recorded for the user.
    * @type {number}
    * @memberof User
    */
   sign_in_attempts_count: number;
   /**
-   * Specifies the time (in Epoch) at which the last sign in attempt was made.
+   * Specifies the time of the last sign-in attempt (in Epoch).
    * @type {number}
    * @memberof User
    */
   last_sign_in_attempt?: number | null;
   /**
-   * Specifies the ip address from which the last sign in attempt was made.
+   * IP address of the last sign-in attempt.
    * @type {string}
    * @memberof User
    */
   last_sign_in_attempt_ip?: string | null;
   /**
-   * Total number of successful sign-ins.
+   * Total successful sign-ins recorded for the user.
    * @type {number}
    * @memberof User
    */
   sign_in_success_count: number;
   /**
-   * Specifies the time (in Epoch) of the last successful sign-in.
+   * Specifies the time of the last successful sign-in (in Epoch).
    * @type {number}
    * @memberof User
    */
   last_sign_in_success?: number | null;
   /**
-   * Specifies the ip address of the last successful sign-in.
+   * IP address of the last successful sign-in.
    * @type {string}
    * @memberof User
    */
   last_sign_in_success_ip?: string | null;
   /**
-   * Specifies the time (in Epoch) at which the last activity of the user was recorded.
+   * Specifies the time of the last recorded user activity (in Epoch).
    * @type {number}
    * @memberof User
    */
   last_activity?: number | null;
   /**
-   * The last known city of the user.
+   * Last recorded city for the user.
    * @type {string}
    * @memberof User
    */
   last_known_city?: string | null;
   /**
-   * The last known country of the user.
+   * Last recorded country for the user.
    * @type {string}
    * @memberof User
    */
   last_known_country?: string | null;
   /**
-   * The last known region of the user.
+   * Last recorded region for the user.
    * @type {string}
    * @memberof User
    */

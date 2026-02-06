@@ -1,47 +1,47 @@
 /**
- * The User Session Metadata response class
+ * User Session Metadata: Returns contextual and device information associated with a user session.
  * @export
  * @interface UserSessionMetadata
  */
 export interface UserSessionMetadata {
   /**
-   * The City.
+   * The city recorded during the most recent session activity.
    * @type {string}
    * @memberof UserSessionMetadata
    */
   city?: string | null;
   /**
-   * The Country.
+   * The country recorded during the most recent session activity.
    * @type {string}
    * @memberof UserSessionMetadata
    */
   country?: string | null;
   /**
-   * The Region.
+   * The geographic region recorded during the most recent session activity.
    * @type {string}
    * @memberof UserSessionMetadata
    */
   region?: string | null;
   /**
-   * Latitude.
+   * The latitude recorded during the most recent session activity.
    * @type {string}
    * @memberof UserSessionMetadata
    */
   latitude?: string | null;
   /**
-   * Longitude.
+   * The longitude recorded during the most recent session activity.
    * @type {string}
    * @memberof UserSessionMetadata
    */
   longitude?: string | null;
   /**
-   * Ip Address from which the authentication request was made.
+   * The IP address recorded during the most recent session activity.
    * @type {string}
    * @memberof UserSessionMetadata
    */
   ip_address?: string | null;
   /**
-   * Device information of the authentication request.
+   * The user agent recorded during the most recent session activity.
    * @type {string}
    * @memberof UserSessionMetadata
    */

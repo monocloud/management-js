@@ -115,11 +115,11 @@ jobs:
           echo "$CLEAN_LOG_CONTENT" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-      - name: Extract Admin Changelog for Specific Version
-        id: extract_changelog_admin
+      - name: Extract Management Changelog for Specific Version
+        id: extract_changelog_management
         env:
           TARGET_VERSION: ${{ needs.release.outputs.version }}
-          CHANGELOG_FILE: 'packages/admin/CHANGELOG.md'
+          CHANGELOG_FILE: 'packages/management/CHANGELOG.md'
         run: |
           LOG_CONTENT=$(sed -n "/^## $TARGET_VERSION\$/,/^## /{/^## $TARGET_VERSION\$/d; /^## /d; p;}" $CHANGELOG_FILE)
           CLEAN_LOG_CONTENT=$(echo "$LOG_CONTENT" | sed 's/[ \t]*$//' | sed '/^$/d')
@@ -143,7 +143,7 @@ jobs:
         id: build_body
         env:
           CORE_CHANGELOG: ${{ steps.extract_changelog_core.outputs.changelog_content }}
-          ADMIN_CHANGELOG: ${{ steps.extract_changelog_admin.outputs.changelog_content }}
+          MANAGEMENT_CHANGELOG: ${{ steps.extract_changelog_management.outputs.changelog_content }}
           IDENTITY_CHANGELOG: ${{ steps.extract_changelog_identity.outputs.changelog_content }}
         run: |
           body=""
@@ -152,8 +152,8 @@ jobs:
             body="${body}### 📦 Core"$'\n'"$CORE_CHANGELOG"$'\n\n\n'
           fi
 
-          if [ -n "$ADMIN_CHANGELOG" ]; then
-            body="${body}### 💻 Admin"$'\n'"$ADMIN_CHANGELOG"$'\n\n\n'
+          if [ -n "$MANAGEMENT_CHANGELOG" ]; then
+            body="${body}### 💻 Management"$'\n'"$MANAGEMENT_CHANGELOG"$'\n\n\n'
           fi
 
           if [ -n "$IDENTITY_CHANGELOG" ]; then

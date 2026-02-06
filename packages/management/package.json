@@ -1,0 +1,49 @@
+{
+  "name": "@monocloud/api-management",
+  "version": "0.1.0",
+  "description": "MonoCloud Management API JavaScript Library",
+  "keywords": [
+    "monocloud",
+    "api",
+    "management",
+    "sdk",
+    "node"
+  ],
+  "homepage": "https://www.monocloud.com",
+  "bugs": {
+    "url": "https://github.com/monocloud/api-sdk-js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monocloud/api-sdk-js.git",
+    "directory": "packages/management"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "MonoCloud",
+    "email": "support@monocloud.com"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "lint:es": "eslint src",
+    "lint:ts": "tsc",
+    "lint": "pnpm run lint:es && pnpm run lint:ts",
+    "test": "eslint tests && jest"
+  },
+  "dependencies": {
+    "@monocloud/api-core": "workspace:*"
+  },
+  "devDependencies": {
+    "eslint": "9.39.2",
+    "nock": "14.0.10"
+  },
+  "engines": {
+    "node": ">= 11.0.0"
+  }
+}

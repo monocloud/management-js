@@ -1,5 +1,5 @@
 /**
- * The Update Claims Request.
+ * Update Claims Request: Updates standard profile claims associated with a user account.
  * @export
  * @interface UpdateClaimsRequest
  */
@@ -11,31 +11,31 @@ export interface UpdateClaimsRequest {
    */
   name?: string | null;
   /**
-   * The user\'s given (first) name.
+   * Given (first) name of the user.
    * @type {string}
    * @memberof UpdateClaimsRequest
    */
   given_name?: string | null;
   /**
-   * The user\'s middle name or initial, if applicable.
+   * Middle name or initial of the user.
    * @type {string}
    * @memberof UpdateClaimsRequest
    */
   middle_name?: string | null;
   /**
-   * The user\'s family (last) name.
+   * Family (last) name of the user.
    * @type {string}
    * @memberof UpdateClaimsRequest
    */
   family_name?: string | null;
   /**
-   * The user\'s preferred nickname.
+   * Preferred nickname for the user.
    * @type {string}
    * @memberof UpdateClaimsRequest
    */
   nickname?: string | null;
   /**
-   * URL of the user’s profile image
+   * URL of the user\'s profile image.
    * @type {string}
    * @memberof UpdateClaimsRequest
    */

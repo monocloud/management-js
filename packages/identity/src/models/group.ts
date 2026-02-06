@@ -1,19 +1,19 @@
 import { GroupTypes } from './group-types';
 
 /**
- * The Group response class
+ * Group: Represents a group used to organize users and client assignments.
  * @export
  * @interface Group
  */
 export interface Group {
   /**
-   * Unique identifier of the group.
+   * The unique identifier of the group.
    * @type {string}
    * @memberof Group
    */
   group_id: string;
   /**
-   * Defines the type of the group: either `custom` or `built-in`.
+   * Specifies whether the group is system-defined or user-managed.
    * @type {GroupTypes}
    * @memberof Group
    */
@@ -25,43 +25,43 @@ export interface Group {
    */
   name: string;
   /**
-   * Optional description that indicates the purpose or role of the group.
+   * Description that explains the purpose or role of the group.
    * @type {string}
    * @memberof Group
    */
   description?: string | null;
   /**
-   * Indicates whether new users are automatically assigned to this group upon sign-up.
+   * Indicates whether users are automatically added to this group upon sign-up.
    * @type {boolean}
    * @memberof Group
    */
   is_auto_assigned: boolean;
   /**
-   * Number of users currently assigned to the group.
+   * The number of users currently assigned to the group.
    * @type {number}
    * @memberof Group
    */
   users_assigned: number;
   /**
-   * Number of client applications associated with the group.
+   * The number of client applications associated with the group.
    * @type {number}
    * @memberof Group
    */
   clients_assigned: number;
   /**
-   * Timestamp (Unix epoch) representing when the group was created.
+   * Specifies the time at which the group was created (in Epoch).
    * @type {number}
    * @memberof Group
    */
   creation_time: number;
   /**
-   * Timestamp (Unix epoch) representing when the group was most recently updated.
+   * Specifies the time at which the group was last updated (in Epoch).
    * @type {number}
    * @memberof Group
    */
   last_updated: number;
   /**
-   * Timestamp (Unix epoch) representing the most recent assignment event for a user or client application.
+   * Specifies the time of the most recent user or client assignment to the group (in Epoch).
    * @type {number}
    * @memberof Group
    */

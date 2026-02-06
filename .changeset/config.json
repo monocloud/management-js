@@ -3,9 +3,9 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [[
-    "@monocloud/management-core",
-    "@monocloud/management-admin",
-    "@monocloud/management-identity"
+    "@monocloud/api-core",
+    "@monocloud/api-management",
+    "@monocloud/api-identity"
   ]],
   "linked": [],
   "access": "public",

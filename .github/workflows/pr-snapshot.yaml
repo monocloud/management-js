@@ -56,9 +56,9 @@ jobs:
 
           cat <<EOF > .changeset/temp-snapshot.md
           ---
-          '@monocloud/management-core': patch
-          '@monocloud/management-admin': patch
-          '@monocloud/management-identity': patch
+          '@monocloud/api-core': patch
+          '@monocloud/api-management': patch
+          '@monocloud/api-identity': patch
           ---
 
           Snapshot release.

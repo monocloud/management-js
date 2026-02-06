@@ -1,53 +1,53 @@
 /**
- * The Reference Token response class
+ * Reference Token: Represents an opaque access token issued to a client.
  * @export
  * @interface ReferenceToken
  */
 export interface ReferenceToken {
   /**
-   * The unique ID of the grant.
+   * The unique identifier of the grant.
    * @type {string}
    * @memberof ReferenceToken
    */
   id: string;
   /**
-   * The unique ID of the client for which the grant was issued.
+   * The unique identifier of the client to which the grant was issued.
    * @type {string}
    * @memberof ReferenceToken
    */
   client_id: string;
   /**
-   * The time (in Epoch) at which the grant was created.
+   * Specifies the time at which the grant was issued (in Epoch).
    * @type {number}
    * @memberof ReferenceToken
    */
   creation_time: number;
   /**
-   * The unique ID of the session
+   * The unique identifier of the user session associated with this token.
    * @type {string}
    * @memberof ReferenceToken
    */
   session_id?: string | null;
   /**
-   * A list of scopes associated with the token.
+   * The scopes granted to this token.
    * @type {string[]}
    * @memberof ReferenceToken
    */
   scopes: string[];
   /**
-   * The time (in Epoch) at which the token will expire.
+   * Specifies the time at which the token expires (in Epoch).
    * @type {number}
    * @memberof ReferenceToken
    */
   expiration?: number | null;
   /**
-   * The audiences for which the token was issued.
+   * The intended audiences for which this token is valid.
    * @type {string[]}
    * @memberof ReferenceToken
    */
   audiences: string[];
   /**
-   * The issuer of the token.
+   * The issuer that generated this token.
    * @type {string}
    * @memberof ReferenceToken
    */

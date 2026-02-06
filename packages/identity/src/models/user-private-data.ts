@@ -1,11 +1,11 @@
 /**
- * The User Private Data response class
+ * User Private Data: Returns private data stored for a user.
  * @export
  * @interface UserPrivateData
  */
 export interface UserPrivateData {
   /**
-   * User\'s Private Data
+   * The private data associated with the user\'s account.
    * @type {{ [key: string]: any; }}
    * @memberof UserPrivateData
    */

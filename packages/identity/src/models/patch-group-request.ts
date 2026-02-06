@@ -1,5 +1,5 @@
 /**
- * The Patch Group class.
+ * Patch Group Request: Used to update one or more properties of an existing group.
  * @export
  * @interface PatchGroupRequest
  */
@@ -11,13 +11,13 @@ export interface PatchGroupRequest {
    */
   name?: string;
   /**
-   * Optional description that indicates the purpose or role of the group.
+   * Description that explains the purpose or role of the group.
    * @type {string}
    * @memberof PatchGroupRequest
    */
   description?: string | null;
   /**
-   * Indicates whether new users are automatically assigned to this group upon sign-up.
+   * Indicates whether users are automatically added to this group upon sign-up.
    * @type {boolean}
    * @memberof PatchGroupRequest
    */

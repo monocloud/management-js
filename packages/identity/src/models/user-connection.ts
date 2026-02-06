@@ -1,19 +1,19 @@
 import { IdPs } from './id-ps';
 
 /**
- * The User Connection response class
+ * User Connection: Represents the association between a user account and an identity provider.
  * @export
  * @interface UserConnection
  */
 export interface UserConnection {
   /**
-   * The identity providers the account is connected to.
+   * The identity provider this user account is connected to.
    * @type {IdPs}
    * @memberof UserConnection
    */
   idp: IdPs;
   /**
-   * Specifies the ID of the user in the identity provider.
+   * Unique identifier of the user account within the connected identity provider.
    * @type {string}
    * @memberof UserConnection
    */

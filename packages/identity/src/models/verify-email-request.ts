@@ -1,11 +1,11 @@
 /**
- * The Verify Email Request.
+ * Verify Email Request: Used to generate an email verification link.
  * @export
  * @interface VerifyEmailRequest
  */
 export interface VerifyEmailRequest {
   /**
-   * Lifetime of the verification link in seconds; defaults to system configuration if omitted.
+   * Lifetime of the verification link (in seconds). Defaults to the system configuration when omitted.
    * @type {number}
    * @memberof VerifyEmailRequest
    */
