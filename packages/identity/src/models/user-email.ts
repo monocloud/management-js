@@ -1,41 +1,41 @@
 /**
- * The User Email response class
+ * User Email: Represents an email address associated with the user account.
  * @export
  * @interface UserEmail
  */
 export interface UserEmail {
   /**
-   * Unique identifier of the user email.
+   * Unique identifier of the user\'s email.
    * @type {string}
    * @memberof UserEmail
    */
   id: string;
   /**
-   * Specifies whether the email is the primary email of the user.
+   * Indicates whether this is the primary email address for the user.
    * @type {boolean}
    * @memberof UserEmail
    */
   primary: boolean;
   /**
-   * Specifies whether the email is verified or not.
+   * Indicates whether the email address has been verified.
    * @type {boolean}
    * @memberof UserEmail
    */
   verified: boolean;
   /**
-   * Specifies where the email was originally collected from.
+   * Source from which the email address was originally collected.
    * @type {string}
    * @memberof UserEmail
    */
   source?: string | null;
   /**
-   * Specifies where the email verification was done.
+   * Identity provider or service that verified the email address.
    * @type {string}
    * @memberof UserEmail
    */
   verification_source?: string | null;
   /**
-   * The email id.
+   * The email address.
    * @type {string}
    * @memberof UserEmail
    */

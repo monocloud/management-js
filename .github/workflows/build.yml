@@ -74,8 +74,8 @@ jobs:
         run: |
           pnpm lint
 
-  admin_test:
-    name: Admin SDK Tests
+  management_test:
+    name: Management SDK Tests
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -97,15 +97,15 @@ jobs:
           path: .
           key: build-${{ github.run_id }}-${{ github.run_attempt }}
 
-      - name: Test Admin
-        run: pnpm --filter @monocloud/management-admin run test --ci --reporters=default --reporters=jest-junit
+      - name: Test Management
+        run: pnpm --filter @monocloud/api-management run test --ci --reporters=default --reporters=jest-junit
 
       - name: Upload test results
         id: upload_artifact
         if: success() || failure()
         uses: actions/upload-artifact@v4
         with:
-          name: MonoCloud.Management.Admin.Tests
+          name: MonoCloud.Api.Management.Tests
           path: "**/junit.xml"
           overwrite: true
 
@@ -113,8 +113,8 @@ jobs:
         if: success() || failure()
         uses: dorny/test-reporter@v1
         with:
-          artifact: MonoCloud.Management.Admin.Tests
-          name: "Admin SDK Tests"
+          artifact: MonoCloud.Api.Management.Tests
+          name: "Management SDK Tests"
           path: "**/junit.xml"
           reporter: jest-junit
           fail-on-error: false
@@ -143,14 +143,14 @@ jobs:
           key: build-${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Test Identity
-        run: pnpm --filter @monocloud/management-identity run test --ci --reporters=default --reporters=jest-junit
+        run: pnpm --filter @monocloud/api-identity run test --ci --reporters=default --reporters=jest-junit
 
       - name: Upload test results
         id: upload_artifact
         if: success() || failure()
         uses: actions/upload-artifact@v4
         with:
-          name: MonoCloud.Management.Identity.Tests
+          name: MonoCloud.Api.Identity.Tests
           path: "**/junit.xml"
           overwrite: true
 
@@ -158,7 +158,7 @@ jobs:
         if: success() || failure()
         uses: dorny/test-reporter@v1
         with:
-          artifact: MonoCloud.Management.Identity.Tests
+          artifact: MonoCloud.Api.Identity.Tests
           name: "Identity SDK Tests"
           path: "**/junit.xml"
           reporter: jest-junit

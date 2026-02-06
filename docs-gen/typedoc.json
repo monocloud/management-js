@@ -7,7 +7,7 @@
   "entryPointStrategy": "packages",
   "out": "../docs",
   "includeVersion": false,
-  "name": "MonoCloud Management SDK",
+  "name": "MonoCloud API SDK",
   "readme": "../README.md",
   "hideGenerator": true,
   "disableSources": false,

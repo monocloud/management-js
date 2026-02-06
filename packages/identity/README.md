@@ -1,18 +1,18 @@
-![MonoCloud Logo](https://raw.githubusercontent.com/monocloud/management-js/refs/heads/main/MonoCloud.png)
+![MonoCloud Logo](https://raw.githubusercontent.com/monocloud/api-sdk-js/refs/heads/main/MonoCloud.png)
 
 ## Introduction
 
-**MonoCloud Management Identity SDK for JavaScript – programmatically manage users and groups via the MonoCloud Management APIs.**
+**MonoCloud API Identity SDK for JavaScript – programmatically manage users and groups via the MonoCloud APIs.**
 
-[MonoCloud](https://www.monocloud.com?utm_source=github&utm_medium=management_js) is a modern, developer-friendly Identity & Access Management platform.
+[MonoCloud](https://www.monocloud.com?utm_source=github&utm_medium=api_sdk_js) is a modern, developer-friendly Identity & Access Management platform.
 
-This SDK provides a full-featured, typed JavaScript client for interacting with the **MonoCloud Management APIs**, allowing you to automate tenant administration programmatically.
+This SDK provides a full-featured, typed JavaScript client for interacting with the **MonoCloud APIs**, allowing you to automate tenant administration programmatically.
 
 ## 📘 Documentation
 
-- **Documentation:** [https://www.monocloud.com/docs](https://www.monocloud.com/docs?utm_source=github&utm_medium=management_js)
-- **SDK Docs:** [https://www.monocloud.com/docs/apis/identity](https://www.monocloud.com/docs/apis/identity?utm_source=github&utm_medium=management_js)
-- **API Reference:** [https://monocloud.github.io/management-js](https://monocloud.github.io/management-js?utm_source=github&utm_medium=management_js)
+- **Documentation:** [https://www.monocloud.com/docs](https://www.monocloud.com/docs?utm_source=github&utm_medium=api_sdk_js)
+- **SDK Docs:** [https://www.monocloud.com/docs/apis/identity](https://www.monocloud.com/docs/apis/identity?utm_source=github&utm_medium=api_sdk_js)
+- **API Reference:** [https://monocloud.github.io/api-sdk-js](https://monocloud.github.io/api-sdk-js?utm_source=github&utm_medium=api_sdk_js)
 
 ## Supported Platforms
 
@@ -23,12 +23,12 @@ This SDK provides a full-featured, typed JavaScript client for interacting with 
 ### Requirements
 
 - A **MonoCloud tenant**
-- A **Management API key** with appropriate permissions
+- A **Tenant API key** with appropriate permissions
 
 ## 📦 Installation
 
 ```bash
-npm install @monocloud/management-identity
+npm install @monocloud/api-identity
 ```
 
 ## Usage
@@ -40,7 +40,7 @@ const identityClient = MonoCloudIdentityClient.init({
 });
 ```
 
-⚠️ **Security Note:** Do not hardcode your API key. It is recommended to load it from an environment variable. See: [`monocloud-identity-client`](https://github.com/monocloud/management-js/blob/main/packages/identity/src/monocloud-identity-client.ts)
+⚠️ **Security Note:** Do not hardcode your API key. It is recommended to load it from an environment variable. See: [`monocloud-identity-client`](https://github.com/monocloud/api-sdk-js/blob/main/packages/identity/src/monocloud-identity-client.ts)
 
 ### ✨ Usage Examples
 
@@ -57,7 +57,7 @@ const result = await identityClient.users.getAllUsers(
 );
 ```
 
-Explore further operations at [https://www.monocloud.com/docs](https://www.monocloud.com/docs?utm_source=github&utm_medium=management_js)
+Explore further operations at [https://www.monocloud.com/docs](https://www.monocloud.com/docs?utm_source=github&utm_medium=api_sdk_js)
 
 ## 🤝 Contributing & Support
 
@@ -68,8 +68,8 @@ Explore further operations at [https://www.monocloud.com/docs](https://www.monoc
 
 ### Security
 
-Do **not** report security issues publicly. Please follow the contact instructions at: [https://www.monocloud.com/contact](https://www.monocloud.com/contact?utm_source=github&utm_medium=management_js)
+Do **not** report security issues publicly. Please follow the contact instructions at: [https://www.monocloud.com/contact](https://www.monocloud.com/contact?utm_source=github&utm_medium=api_sdk_js)
 
 ## 📄 License
 
-Licensed under the **MIT License**. See the included [`LICENSE`](https://github.com/monocloud/management-js/blob/main/LICENSE) file.
+Licensed under the **MIT License**. See the included [`LICENSE`](https://github.com/monocloud/api-sdk-js/blob/main/LICENSE) file.

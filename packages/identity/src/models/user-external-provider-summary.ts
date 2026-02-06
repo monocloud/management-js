@@ -1,19 +1,19 @@
 import { ExternalAuthenticators } from './external-authenticators';
 
 /**
- * The User External Provider summary response class
+ * External Provider Summary: Represents a linked identity provider account for the user.
  * @export
  * @interface UserExternalProviderSummary
  */
 export interface UserExternalProviderSummary {
   /**
-   * Specifies the External Authenticator.
+   * The authenticator associated with this connection.
    * @type {ExternalAuthenticators}
    * @memberof UserExternalProviderSummary
    */
   authenticator: ExternalAuthenticators;
   /**
-   * Specifies the idp user Id.
+   * The user identifier assigned by the identity provider.
    * @type {string}
    * @memberof UserExternalProviderSummary
    */

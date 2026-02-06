@@ -1,5 +1,5 @@
 /**
- * The Create Group Request class.
+ * Create Group Request: Used to create a new group.
  * @export
  * @interface CreateGroupRequest
  */
@@ -11,13 +11,13 @@ export interface CreateGroupRequest {
    */
   name: string;
   /**
-   * Optional description that indicates the purpose or role of the group.
+   * Description that explains the purpose or role of the group.
    * @type {string}
    * @memberof CreateGroupRequest
    */
   description?: string | null;
   /**
-   * Indicates whether new users are automatically assigned to this group upon sign-up.
+   * Indicates whether users are automatically added to this group upon sign-up.
    * @type {boolean}
    * @memberof CreateGroupRequest
    */

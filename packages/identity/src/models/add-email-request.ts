@@ -1,5 +1,5 @@
 /**
- * The Add Email Request.
+ * Add Email Request: Used to add a new email address for a user account.
  * @export
  * @interface AddEmailRequest
  */
@@ -11,13 +11,13 @@ export interface AddEmailRequest {
    */
   email: string;
   /**
-   * Indicates whether the email should be marked as verified when added. If false, verification may be required before the email can be used in login or recovery flows.
+   * Indicates whether the email should be marked as verified when added. Verification may be required before the email can be used in login or recovery flows.
    * @type {boolean}
    * @memberof AddEmailRequest
    */
   is_verified?: boolean;
   /**
-   * Skips blacklist validation for the provided email.
+   * Allows bypassing blacklist validation for the provided email.
    * @type {boolean}
    * @memberof AddEmailRequest
    */

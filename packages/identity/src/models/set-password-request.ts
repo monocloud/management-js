@@ -1,13 +1,13 @@
 import { PasswordAlgorithms } from './password-algorithms';
 
 /**
- * The Set Password Request class.
+ * Set Password Request: Used to set or update a user\'s password, with support for plaintext or pre-hashed values.
  * @export
  * @interface SetPasswordRequest
  */
 export interface SetPasswordRequest {
   /**
-   * Plaintext password to assign to the user.
+   * Plain-text password to assign to the user.
    * @type {string}
    * @memberof SetPasswordRequest
    */
@@ -19,7 +19,7 @@ export interface SetPasswordRequest {
    */
   password_hash?: string | null;
   /**
-   * The hashing algorithm used for the provided password hash.
+   * Hashing algorithm used for the provided password hash.
    * @type {PasswordAlgorithms}
    * @memberof SetPasswordRequest
    */
@@ -31,13 +31,13 @@ export interface SetPasswordRequest {
    */
   is_temporary_password?: boolean;
   /**
-   * Determines whether configured password policy rules should be bypassed.
+   * Allows bypassing configured password policy checks.
    * @type {boolean}
    * @memberof SetPasswordRequest
    */
   skip_password_policy_checks?: boolean;
   /**
-   * Determines whether active sessions should be revoked after updating the password.
+   * A flag to indicate whether all active user sessions should be revoked when the password is updated.
    * @type {boolean}
    * @memberof SetPasswordRequest
    */

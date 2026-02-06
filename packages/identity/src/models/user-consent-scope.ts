@@ -1,23 +1,23 @@
 /**
- * The User Consent Scope response class
+ * User Consent Scope: Represents a scope granted by the user as part of a consent.
  * @export
  * @interface UserConsentScope
  */
 export interface UserConsentScope {
   /**
-   * The consented scope name.
+   * The name of the scope for which consent was granted.
    * @type {string}
    * @memberof UserConsentScope
    */
   scope: string;
   /**
-   * The time (in Epoch) at which the consent was granted for the scope.
+   * Specifies the time at which consent for the scope was granted (in Epoch).
    * @type {number}
    * @memberof UserConsentScope
    */
   granted_on: number;
   /**
-   * The time (in Epoch) at which the consent will expire.
+   * Specifies the time at which the granted consent expires (in Epoch).
    * @type {number}
    * @memberof UserConsentScope
    */

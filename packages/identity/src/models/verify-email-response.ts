@@ -1,11 +1,11 @@
 /**
- * The Verify Email Response
+ * Verify Email Response: Returns the delivery status of the verification email.
  * @export
  * @interface VerifyEmailResponse
  */
 export interface VerifyEmailResponse {
   /**
-   * The expiry date for the generated magic link (in epoch).
+   * The expiry time for the verification link (in Epoch).
    * @type {number}
    * @memberof VerifyEmailResponse
    */

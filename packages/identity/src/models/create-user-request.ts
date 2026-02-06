@@ -1,43 +1,43 @@
 import { PasswordAlgorithms } from './password-algorithms';
 
 /**
- * The Create User Request class.
+ * Create User Request: Fields used to create a new user and optionally set identifiers, credentials, and profile attributes.
  * @export
  * @interface CreateUserRequest
  */
 export interface CreateUserRequest {
   /**
-   * The username to assign to the user. Must comply with the configured username policy, including format and uniqueness requirements.
+   * Username to assign to the user. Must satisfy username policy and be unique.
    * @type {string}
    * @memberof CreateUserRequest
    */
   username?: string | null;
   /**
-   * The user’s email address.
+   * Email address to add to the user account.
    * @type {string}
    * @memberof CreateUserRequest
    */
   email?: string | null;
   /**
-   * Indicates whether the email should be marked as verified when added. If false, verification may be required before the email can be used in login or recovery flows.
+   * Marks the email as verified. Users cannot sign in with this email until it is verified.
    * @type {boolean}
    * @memberof CreateUserRequest
    */
   email_verified?: boolean | null;
   /**
-   * The phone number to add to the user’s account, provided in E.164 format (e.g., +14085551234).
+   * Phone number to add to the user account in E.164 format.
    * @type {string}
    * @memberof CreateUserRequest
    */
   phone_number?: string | null;
   /**
-   * Indicates whether the phone number should be marked as verified when added. If false, verification may be required before the number can be used in login or recovery flows.
+   * Marks the phone number as verified. Users cannot sign in with this phone number until it is verified.
    * @type {boolean}
    * @memberof CreateUserRequest
    */
   phone_number_verified?: boolean | null;
   /**
-   * Plaintext password to assign to the user.
+   * Initial plain-text password for the user.
    * @type {string}
    * @memberof CreateUserRequest
    */
@@ -49,7 +49,7 @@ export interface CreateUserRequest {
    */
   password_hash?: string | null;
   /**
-   * The hashing algorithm used for the provided password hash.
+   * Hashing algorithm used for the provided password hash.
    * @type {PasswordAlgorithms}
    * @memberof CreateUserRequest
    */
@@ -67,49 +67,49 @@ export interface CreateUserRequest {
    */
   name?: string | null;
   /**
-   * The user\'s given (first) name.
+   * Given (first) name of the user.
    * @type {string}
    * @memberof CreateUserRequest
    */
   given_name?: string | null;
   /**
-   * The user\'s middle name or initial, if applicable.
+   * Middle name or initial of the user.
    * @type {string}
    * @memberof CreateUserRequest
    */
   middle_name?: string | null;
   /**
-   * The user\'s family (last) name.
+   * Family (last) name of the user.
    * @type {string}
    * @memberof CreateUserRequest
    */
   family_name?: string | null;
   /**
-   * The user\'s preferred nickname.
+   * Preferred nickname for the user.
    * @type {string}
    * @memberof CreateUserRequest
    */
   nickname?: string | null;
   /**
-   * URL of the user’s profile image.
+   * URL of the user\'s profile image.
    * @type {string}
    * @memberof CreateUserRequest
    */
   picture?: string | null;
   /**
-   * Determines whether configured password policy rules should be bypassed.
+   * Allows bypassing configured password policy checks.
    * @type {boolean}
    * @memberof CreateUserRequest
    */
   skip_password_policy_checks?: boolean;
   /**
-   * Skips blacklist validation for the provided identifiers.
+   * Allows bypassing blacklist validation for the provided identifiers.
    * @type {boolean}
    * @memberof CreateUserRequest
    */
   skip_identifier_restriction_checks?: boolean;
   /**
-   * Bypasses profile validation rules, such as required fields enforced during signup.
+   * Allows bypassing profile conformance checks enforced by sign-up policies.
    * @type {boolean}
    * @memberof CreateUserRequest
    */

@@ -1,23 +1,23 @@
 /**
- * The User Username response class
+ * Username: Represents a username associated with the user account.
  * @export
  * @interface UserUsername
  */
 export interface UserUsername {
   /**
-   * Unique identifier of the user email.
+   * Unique identifier of the user\'s username.
    * @type {string}
    * @memberof UserUsername
    */
   id: string;
   /**
-   * The username.
+   * The username used to identify the user.
    * @type {string}
    * @memberof UserUsername
    */
   username: string;
   /**
-   * Specifies where the username was originally collected from.
+   * Source from which the username was originally collected.
    * @type {string}
    * @memberof UserUsername
    */

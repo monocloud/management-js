@@ -1,12 +1,12 @@
 /**
- *
+ * The password hashing algorithm.
  * @export
  * @enum {string}
  */
 
 export const PasswordAlgorithms = {
   /**
-   *
+   * BCrypt adaptive password hashing algorithm
    */
   Bcrypt: 'bcrypt',
 } as const;

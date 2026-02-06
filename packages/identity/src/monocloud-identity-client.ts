@@ -1,4 +1,4 @@
-import { MonoCloudConfig, Fetcher } from '@monocloud/management-core';
+import { MonoCloudConfig, Fetcher } from '@monocloud/api-core';
 import { GroupsClient, UsersClient } from './clients';
 
 export class MonoCloudIdentityClient {

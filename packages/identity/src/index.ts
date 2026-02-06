@@ -17,7 +17,7 @@ import {
   ErrorCodeValidationProblemDetails,
   KeyValidationProblemDetails,
   Fetcher,
-} from '@monocloud/management-core';
+} from '@monocloud/api-core';
 import { MonoCloudIdentityClient } from './monocloud-identity-client';
 
 export { MonoCloudIdentityClient, MonoCloudResponse };

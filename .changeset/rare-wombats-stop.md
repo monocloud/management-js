@@ -1,7 +1,7 @@
 ---
-'@monocloud/management-identity': patch
-'@monocloud/management-admin': patch
-'@monocloud/management-core': patch
+'@monocloud/api-identity': patch
+'@monocloud/api-management': patch
+'@monocloud/api-core': patch
 ---
 
 Added documentation links to README.md
