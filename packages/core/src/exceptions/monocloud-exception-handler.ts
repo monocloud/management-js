@@ -1,9 +1,9 @@
-import { ErrorCodeValidationProblemDetails } from '../models/error-code-validation-problem-details';
+import { IdentityValidationProblemDetails } from '../models/identity-validation-problem-details';
 import { KeyValidationProblemDetails } from '../models/key-validation-problem-details';
 import { ProblemDetails } from '../models/problem-details';
 import { MonoCloudBadRequestException } from './monocloud-bad-request-exception';
 import { MonoCloudConflictException } from './monocloud-conflict-exception';
-import { MonoCloudErrorCodeValidationException } from './monocloud-error-code-validation-exception';
+import { MonoCloudIdentityValidationException } from './monocloud-identity-validation-exception';
 import { MonoCloudException } from './monocloud-exception';
 import { MonoCloudKeyValidationException } from './monocloud-key-validation-exception';
 import { MonoCloudModelStateException } from './monocloud-model-state-exception';
@@ -11,22 +11,26 @@ import { MonoCloudNotFoundException } from './monocloud-not-found-exception';
 import { MonoCloudResourceExhaustedException } from './monocloud-resource-exhausted-exception';
 import { MonoCloudServerException } from './monocloud-server-exception';
 import { MonoCloudUnauthorizedException } from './monocloud-unauthorized-exception';
+import { MonoCloudPaymentRequiredException } from './monocloud-payment-required-exception';
 
-/// <summary>
-/// The MonoCloud Exception Handler
-/// </summary>
+/**
+ * The MonoCloud Exception Handler
+ * @export
+ * @class MonoCloudExceptionHandler
+ */
 export class MonoCloudExceptionHandler {
-  /// <summary>
-  /// Converts the Problem Details returned from the server into an exception
-  /// </summary>
-  /// <param name="problemDetails">The problem details returned from the server.</param>
-  /// <returns></returns>
+  /**
+   * Converts the Problem Details returned from the server into an exception
+   * @param problemDetails - The problem details returned from the server.
+   */
   public static ThrowProblemErr(problemDetails: ProblemDetails): void {
     switch (problemDetails.status) {
       case 400:
         throw new MonoCloudBadRequestException(problemDetails);
       case 401:
         throw new MonoCloudUnauthorizedException(problemDetails);
+      case 402:
+        throw new MonoCloudPaymentRequiredException(problemDetails);
       case 403:
         throw new MonoCloudUnauthorizedException(problemDetails);
       case 404:
@@ -34,8 +38,8 @@ export class MonoCloudExceptionHandler {
       case 409:
         throw new MonoCloudConflictException(problemDetails);
       case 422:
-        if (problemDetails instanceof ErrorCodeValidationProblemDetails) {
-          throw new MonoCloudErrorCodeValidationException(problemDetails);
+        if (problemDetails instanceof IdentityValidationProblemDetails) {
+          throw new MonoCloudIdentityValidationException(problemDetails);
         }
 
         if (problemDetails instanceof KeyValidationProblemDetails) {
@@ -54,18 +58,21 @@ export class MonoCloudExceptionHandler {
     }
   }
 
-  /// <summary>
-  /// Converts the error returned from the server into an exception
-  /// </summary>
-  /// <param name="statusCode">The response status code.</param>
-  /// <param name="message">The error message returned from the server.</param>
-  /// <returns></returns>
+  /**
+   * Converts the error returned from the server into an exception
+   * @param statusCode - The response status code.
+   * @param message - The error message returned from the server.
+   */
   public static ThrowErr(statusCode: number, message?: string): void {
     switch (statusCode) {
       case 400:
         throw new MonoCloudBadRequestException(message ?? 'Bad Request');
       case 401:
         throw new MonoCloudUnauthorizedException(message ?? 'Unauthorized');
+      case 402:
+        throw new MonoCloudPaymentRequiredException(
+          message ?? 'Payment Required'
+        );
       case 403:
         throw new MonoCloudUnauthorizedException(message ?? 'Forbidden');
       case 404:

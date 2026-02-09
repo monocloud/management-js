@@ -1,26 +1,41 @@
+/**
+ * The Page Model
+ * @export
+ * @interface PageModel
+ */
 export interface PageModel {
-  /// <summary>
-  /// Page Size
-  /// </summary>
+  /**
+   * Page Size
+   * @type {number}
+   * @memberof PageModel
+   */
   page_size: number;
 
-  /// <summary>
-  /// Current Page
-  /// </summary>
+  /**
+   * Current Page
+   * @type {number}
+   * @memberof PageModel
+   */
   current_page: number;
 
-  /// <summary>
-  /// Total Number of Items
-  /// </summary>
+  /**
+   * Total Number of Items
+   * @type {number}
+   * @memberof PageModel
+   */
   total_count: number;
 
-  /// <summary>
-  /// Specfies whether there is a previous page
-  /// </summary>
+  /**
+   * Specfies whether there is a previous page
+   * @type {boolean}
+   * @memberof PageModel
+   */
   has_previous: boolean;
 
-  /// <summary>
-  /// Specfies whether there is a next page
-  /// </summary>
+  /**
+   * Specfies whether there is a next page
+   * @type {boolean}
+   * @memberof PageModel
+   */
   has_next: boolean;
 }

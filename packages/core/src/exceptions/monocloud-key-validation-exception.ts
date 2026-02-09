@@ -1,16 +1,18 @@
 import { KeyValidationProblemDetails } from '../models/key-validation-problem-details';
 import { MonoCloudRequestException } from './monocloud-request-exception';
 
-/// <summary>
-/// The MonoCloud Key Validation Exception Exception
-/// </summary>
+/**
+ * The MonoCloud Key Validation Exception
+ * @export
+ * @class MonoCloudKeyValidationException
+ */
 export class MonoCloudKeyValidationException extends MonoCloudRequestException {
   errors: Record<string, string[]>;
 
-  /// <summary>
-  /// Initializes the MonoCloudKeyValidationException Class
-  /// </summary>
-  /// <param name="response">The problem details returned from the server.</param>
+  /**
+   * Initializes the MonoCloudKeyValidationException Class
+   * @param response - The problem details returned from the server.
+   */
   constructor(response: KeyValidationProblemDetails) {
     super(
       response,

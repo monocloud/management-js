@@ -1,20 +1,22 @@
 import { ProblemDetails } from '../models/problem-details';
 import { MonoCloudRequestException } from './monocloud-request-exception';
 
-/// <summary>
-/// The MonoCloud Unauthorized Exception
-/// </summary>
+/**
+ * The MonoCloud Unauthorized Exception
+ * @export
+ * @class MonoCloudUnauthorizedException
+ */
 export class MonoCloudUnauthorizedException extends MonoCloudRequestException {
-  /// <summary>
-  /// Initializes the MonoCloudUnauthorizedException Class
-  /// </summary>
-  /// <param name="response">The problem details returned from the server.</param>
+  /**
+   * Initializes the MonoCloudUnauthorizedException Class
+   * @param response - The problem details returned from the server.
+   */
   constructor(response: ProblemDetails);
 
-  /// <summary>
-  /// Initializes the MonoCloudUnauthorizedException Class
-  /// </summary>
-  /// <param name="message">The error message.</param>
+  /**
+   * Initializes the MonoCloudUnauthorizedException Class
+   * @param message - The error message.
+   */
   constructor(message: string);
 
   constructor(arg: ProblemDetails | string) {

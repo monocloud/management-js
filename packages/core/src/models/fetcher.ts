@@ -1,4 +1,4 @@
 export type Fetcher = (
-  input: string | URL | globalThis.Request,
+  input: string | URL,
   init?: RequestInit
 ) => Promise<Response>;

@@ -1,20 +1,22 @@
 import { ProblemDetails } from '../models/problem-details';
 import { MonoCloudRequestException } from './monocloud-request-exception';
 
-/// <summary>
-/// The MonoCloud Conflict Exception
-/// </summary>
+/**
+ * The MonoCloud Conflict Exception
+ * @export
+ * @class MonoCloudConflictException
+ */
 export class MonoCloudConflictException extends MonoCloudRequestException {
-  /// <summary>
-  /// Initializes the MonoCloudConflictException Class
-  /// </summary>
-  /// <param name="response">The problem details returned from the server.</param>
+  /**
+   * Initializes the MonoCloudConflictException Class
+   * @param response - The problem details returned from the server.
+   */
   constructor(response: ProblemDetails);
 
-  /// <summary>
-  /// Initializes the MonoCloudConflictException Class
-  /// </summary>
-  /// <param name="message">The error message.</param>
+  /**
+   * Initializes the MonoCloudConflictException Class
+   * @param message - The error message.
+   */
   constructor(message: string);
 
   constructor(arg: ProblemDetails | string) {
