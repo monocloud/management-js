@@ -1,20 +1,22 @@
 import { ProblemDetails } from '../models/problem-details';
 import { MonoCloudRequestException } from './monocloud-request-exception';
 
-/// <summary>
-/// The MonoCloud Resource Exhausted Exception
-/// </summary>
+/**
+ * The MonoCloud Resource Exhausted Exception
+ * @export
+ * @class MonoCloudResourceExhaustedException
+ */
 export class MonoCloudResourceExhaustedException extends MonoCloudRequestException {
-  /// <summary>
-  /// Initializes the MonoCloudResourceExhaustedException Class
-  /// </summary>
-  /// <param name="response">The problem details returned from the server.</param>
+  /**
+   * Initializes the MonoCloudResourceExhaustedException Class
+   * @param response - The problem details returned from the server.
+   */
   constructor(response: ProblemDetails);
 
-  /// <summary>
-  /// Initializes the MonoCloudResourceExhaustedException Class
-  /// </summary>
-  /// <param name="message">The error message.</param>
+  /**
+   * Initializes the MonoCloudResourceExhaustedException Class
+   * @param message - The error message.
+   */
   constructor(message: string);
 
   constructor(arg: ProblemDetails | string) {

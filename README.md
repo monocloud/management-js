@@ -1,24 +1,25 @@
 <div align="center">
   <a href="https://www.monocloud.com?utm_source=github&utm_medium=management_js" target="_blank" rel="noopener noreferrer">
     <picture>
-      <img src="https://raw.githubusercontent.com/monocloud/management-js/refs/heads/main/MonoCloud.png" height="100" alt="MonoCloud Logo">
+      <img src="https://raw.githubusercontent.com/monocloud/management-js/refs/heads/main/banner.svg" alt="MonoCloud Banner">
     </picture>
   </a>
-  <p>Secure, simple auth for everything</p>
-  <img src="https://img.shields.io/npm/v/@monocloud/management" alt="NPM" />
-  <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/:license-MIT-blue.svg?style=flat" alt="License: MIT" />
-  </a>
-  <a href="https://github.com/monocloud/management-js/actions/workflows/build.yml">
-    <img src="https://github.com/monocloud/management-js/actions/workflows/build.yml/badge.svg" alt="Build Status" />
-  </a>
+  <div align="right">
+    <a href="https://www.npmjs.com/package/@monocloud/management" target="_blank">
+      <img src="https://img.shields.io/npm/v/@monocloud/management" alt="NPM" />
+    </a>
+    <a href="https://opensource.org/licenses/MIT" target="_blank">
+      <img src="https://img.shields.io/:license-MIT-blue.svg?style=flat" alt="License: MIT" />
+    </a>
+    <a href="https://github.com/monocloud/management-js/actions/workflows/build.yml" target="_blank">
+      <img src="https://github.com/monocloud/management-js/actions/workflows/build.yml/badge.svg" alt="Build Status" />
+    </a>
+  </div>
 </div>
-
-<br /><br />
 
 ## Introduction
 
-**MonoCloud Management SDK for JavaScript – programmatically manage apps, policies, configurations, and users via the MonoCloud Management APIs.**
+**MonoCloud Management SDK for JavaScript – programmatically manage apps, policies, configurations, users, and groups via the MonoCloud Management APIs.**
 
 [MonoCloud](https://www.monocloud.com?utm_source=github&utm_medium=management_js) is a modern, developer-friendly Identity & Access Management platform.
 
@@ -49,6 +50,8 @@ npm install @monocloud/management
 
 ### Usage
 
+The SDK closely mirrors the REST API structure — clients are organized by resource areas (clients, resources, users, groups, etc.).
+
 ```typescript
 const managementClient = MonoCloudManagementClient.init({
   domain: 'https://<your-tenant-domain>',
@@ -56,13 +59,10 @@ const managementClient = MonoCloudManagementClient.init({
 });
 ```
 
-⚠️ **Security Note:** Do not hardcode your API key. It is recommended to load it from an environment variable. See: [`monocloud-management-client`](https://github.com/monocloud/management-js/blob/main/packages/management/src/monocloud-management-client.ts)
+> [!CAUTION]
+> Do not hardcode your API key. It is recommended to load it from an environment variable. See: [`monocloud-management-client`](https://github.com/monocloud/management-js/blob/main/packages/management/src/monocloud-management-client.ts)
 
-### Usage Examples
-
-The SDK closely mirrors the REST API structure — clients are organized by resource areas (clients, resources, users, groups, etc.).
-
-#### 🔍 Get all clients
+#### Example - Get all clients
 
 ```typescript
 const result = await managementClient.clients.getAllClients(
@@ -70,17 +70,6 @@ const result = await managementClient.clients.getAllClients(
     size: 10,
     filter: "dashboard",
     sort: "name:1"
-);
-```
-
-#### 🔍 Get all users
-
-```typescript
-const result = await managementClient.users.getAllUsers(
-    page: 1,
-    size: 10,
-    filter: "bob",
-    sort: "given_name:1"
 );
 ```
 

@@ -1,32 +1,47 @@
+/**
+ * The Problem Details
+ * @export
+ * @class ProblemDetails
+ */
 export class ProblemDetails {
-  /// <summary>
-  /// The type of error
-  /// </summary>
+  /**
+   * The type of error
+   * @type {string}
+   * @memberof ProblemDetails
+   */
   type: string;
 
-  /// <summary>
-  /// The title of the error
-  /// </summary>
+  /**
+   * The title of the error
+   * @type {string}
+   * @memberof ProblemDetails
+   */
   title: string;
 
-  /// <summary>
-  /// The status code representing the error
-  /// </summary>
+  /**
+   * The status code representing the error
+   * @type {number}
+   * @memberof ProblemDetails
+   */
   status: number;
 
-  /// <summary>
-  /// The error details
-  /// </summary>
+  /**
+   * The error details
+   * @type {string}
+   * @memberof ProblemDetails
+   */
   detail: string;
 
-  /// <summary>
-  /// The instance
-  /// </summary>
+  /**
+   * The instance
+   * @type {string}
+   * @memberof ProblemDetails
+   */
   instance: string;
 
-  /// <summary>
-  /// Additional data about the error
-  /// </summary>
+  /**
+   * Additional data about the error
+   */
 
   [key: string]: any;
 

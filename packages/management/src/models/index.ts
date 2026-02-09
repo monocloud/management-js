@@ -64,7 +64,6 @@ export * from './group';
 export * from './group-types';
 export * from './id-ps';
 export * from './identifier-options';
-export * from './identity-error';
 export * from './key-material';
 export * from './key-material-uses';
 export * from './linked-in-authenticator-options';
