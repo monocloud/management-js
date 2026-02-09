@@ -4,8 +4,7 @@
   "commit": false,
   "fixed": [[
     "@monocloud/management-core",
-    "@monocloud/management-admin",
-    "@monocloud/management-identity"
+    "@monocloud/management"
   ]],
   "linked": [],
   "access": "public",

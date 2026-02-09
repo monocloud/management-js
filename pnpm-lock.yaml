@@ -69,26 +69,13 @@ importers:
         specifier: 8.48.1
         version: 8.48.1(eslint@9.39.1)(typescript@5.9.3)
 
-  packages/admin:
-    dependencies:
-      '@monocloud/management-core':
-        specifier: workspace:*
-        version: link:../core
-    devDependencies:
-      eslint:
-        specifier: 9.39.1
-        version: 9.39.1
-      nock:
-        specifier: 14.0.10
-        version: 14.0.10
-
   packages/core:
     devDependencies:
       eslint:
         specifier: 9.39.1
         version: 9.39.1
 
-  packages/identity:
+  packages/management:
     dependencies:
       '@monocloud/management-core':
         specifier: workspace:*

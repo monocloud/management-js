@@ -19,7 +19,7 @@ This SDK provides a full-featured, typed JavaScript client for interacting with 
 
 ## ⚠️ Warning
 
-**This is a shared library** for [@monocloud/management-admin](https://www.npmjs.com/package/@monocloud/management-admin) and [@monocloud/management-identity](https://www.npmjs.com/package/@monocloud/management-identity).
+**This is a shared library** for [@monocloud/management](https://www.npmjs.com/package/@monocloud/management).
 
 ## 📘 Documentation
 

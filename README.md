@@ -5,7 +5,7 @@
     </picture>
   </a>
   <p>Secure, simple auth for everything</p>
-  <img src="https://img.shields.io/npm/v/@monocloud/management-core" alt="NPM" />
+  <img src="https://img.shields.io/npm/v/@monocloud/management" alt="NPM" />
   <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/:license-MIT-blue.svg?style=flat" alt="License: MIT" />
   </a>
@@ -27,6 +27,7 @@ This SDK provides a full-featured, typed JavaScript client for interacting with 
 ## 📘 Documentation
 
 - **Documentation:** [https://www.monocloud.com/docs](https://www.monocloud.com/docs?utm_source=github&utm_medium=management_js)
+- **Management API SDK Docs:** [https://www.monocloud.com/docs/apis/management](https://www.monocloud.com/docs/apis/management?utm_source=github&utm_medium=management_js)
 - **API Reference:** [https://monocloud.github.io/management-js](https://monocloud.github.io/management-js?utm_source=github&utm_medium=management_js)
 
 ## Supported Platforms
@@ -40,33 +41,31 @@ This SDK provides a full-featured, typed JavaScript client for interacting with 
 - A **MonoCloud tenant**
 - A **Management API key** with appropriate permissions
 
-## Admin API
-
-### 📦 Installation
+### Installation
 
 ```bash
-npm install @monocloud/management-admin
+npm install @monocloud/management
 ```
 
 ### Usage
 
 ```typescript
-const adminClient = MonoCloudAdminClient.init({
+const managementClient = MonoCloudManagementClient.init({
   domain: 'https://<your-tenant-domain>',
   apiKey: '<your-api-key>',
 });
 ```
 
-⚠️ **Security Note:** Do not hardcode your API key. It is recommended to load it from an environment variable. See: [`monocloud-admin-client`](https://github.com/monocloud/management-js/blob/main/packages/admin/src/monocloud-admin-client.ts)
+⚠️ **Security Note:** Do not hardcode your API key. It is recommended to load it from an environment variable. See: [`monocloud-management-client`](https://github.com/monocloud/management-js/blob/main/packages/management/src/monocloud-management-client.ts)
 
-### ✨ Usage Examples
+### Usage Examples
 
-The SDK closely mirrors the REST API structure — clients are organized by resource areas (clients, resources, etc.).
+The SDK closely mirrors the REST API structure — clients are organized by resource areas (clients, resources, users, groups, etc.).
 
 #### 🔍 Get all clients
 
 ```typescript
-const result = await adminClient.clients.getAllClients(
+const result = await managementClient.clients.getAllClients(
     page: 1,
     size: 10,
     filter: "dashboard",
@@ -74,36 +73,10 @@ const result = await adminClient.clients.getAllClients(
 );
 ```
 
-Explore further operations (clients, options, trust stores, etc.) using the same patterns.
-See: [https://www.monocloud.com/docs](https://www.monocloud.com/docs?utm_source=github&utm_medium=management_js)
-
-## Identity API
-
-### 📦 Installation
-
-```bash
-npm install @monocloud/management-identity
-```
-
-### Usage
-
-```typescript
-const identityClient = MonoCloudIdentityClient.init({
-  domain: 'https://<your-tenant-domain>',
-  apiKey: '<your-api-key>',
-});
-```
-
-⚠️ **Security Note:** Do not hardcode your API key. It is recommended to load it from an environment variable. See: [`monocloud-identity-client`](https://github.com/monocloud/management-js/blob/main/packages/identity/src/monocloud-identity-client.ts)
-
-### ✨ Usage Examples
-
-The SDK closely mirrors the REST API structure — clients are organized by users and groups.
-
 #### 🔍 Get all users
 
 ```typescript
-const result = await identityClient.users.getAllUsers(
+const result = await managementClient.users.getAllUsers(
     page: 1,
     size: 10,
     filter: "bob",
