@@ -1,5 +1,11 @@
 # @monocloud/management-core
 
+## 0.1.5
+
+### Patch Changes
+
+- 3a40217: Version bump
+
 ## 0.1.4
 
 ## 0.1.3
