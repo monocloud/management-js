@@ -66,10 +66,10 @@ const managementClient = MonoCloudManagementClient.init({
 
 ```typescript
 const result = await managementClient.clients.getAllClients(
-    page: 1,
-    size: 10,
-    filter: "dashboard",
-    sort: "name:1"
+  1,
+  10,
+  "dashboard",
+  "name:1"
 );
 ```
 
