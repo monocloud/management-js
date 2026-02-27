@@ -1,5 +1,11 @@
 # @monocloud/management-core
 
+## 0.2.1
+
+### Patch Changes
+
+- dee26f6: Fix exception handling for 403 status code by using MonoCloudForbiddenException
+
 ## 0.2.0
 
 ### Minor Changes
