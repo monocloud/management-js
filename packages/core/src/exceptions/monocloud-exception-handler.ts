@@ -12,6 +12,7 @@ import { MonoCloudResourceExhaustedException } from './monocloud-resource-exhaus
 import { MonoCloudServerException } from './monocloud-server-exception';
 import { MonoCloudUnauthorizedException } from './monocloud-unauthorized-exception';
 import { MonoCloudPaymentRequiredException } from './monocloud-payment-required-exception';
+import { MonoCloudForbiddenException } from './monocloud-forbidden-exception';
 
 /**
  * The MonoCloud Exception Handler
@@ -32,7 +33,7 @@ export class MonoCloudExceptionHandler {
       case 402:
         throw new MonoCloudPaymentRequiredException(problemDetails);
       case 403:
-        throw new MonoCloudUnauthorizedException(problemDetails);
+        throw new MonoCloudForbiddenException(problemDetails);
       case 404:
         throw new MonoCloudNotFoundException(problemDetails);
       case 409:
@@ -74,7 +75,7 @@ export class MonoCloudExceptionHandler {
           message ?? 'Payment Required'
         );
       case 403:
-        throw new MonoCloudUnauthorizedException(message ?? 'Forbidden');
+        throw new MonoCloudForbiddenException(message ?? 'Forbidden');
       case 404:
         throw new MonoCloudNotFoundException(message ?? 'Not Found');
       case 409:
