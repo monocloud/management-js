@@ -36,11 +36,11 @@ export interface PatchSignUpOptionsRequest {
    * @type {PatchSignUpRestrictionsOptionsRequest}
    * @memberof PatchSignUpOptionsRequest
    */
-  whitelist?: PatchSignUpRestrictionsOptionsRequest;
+  allowlist?: PatchSignUpRestrictionsOptionsRequest;
   /**
    * Blocklist of identifiers disallowed during sign-up.
    * @type {PatchSignUpRestrictionsOptionsRequest}
    * @memberof PatchSignUpOptionsRequest
    */
-  blacklist?: PatchSignUpRestrictionsOptionsRequest;
+  blocklist?: PatchSignUpRestrictionsOptionsRequest;
 }

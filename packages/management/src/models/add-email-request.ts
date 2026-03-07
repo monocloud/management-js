@@ -17,7 +17,7 @@ export interface AddEmailRequest {
    */
   is_verified?: boolean;
   /**
-   * Allows bypassing blacklist validation for the provided email.
+   * Allows bypassing blocklist validation for the provided email.
    * @type {boolean}
    * @memberof AddEmailRequest
    */

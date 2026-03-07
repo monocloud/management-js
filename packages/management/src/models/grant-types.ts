@@ -30,7 +30,7 @@ export const GrantTypes = {
    * A legacy flow that issues tokens using a user’s credentials sent directly to the token endpoint.
    * @note Prefer Authorization Code with PKCE whenever possible.
    */
-  Password: 'password',
+  ResourceOwnerPassword: 'resource_owner_password',
 
   /**
    * Supports devices with limited input capabilities (TVs, consoles, CLI tools) by allowing users to authenticate on a separate device while the client polls for approval.
