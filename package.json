@@ -7,7 +7,7 @@
     "lint": "turbo run lint:es -- --fix && turbo run lint:ts",
     "test": "turbo run test",
     "changeset": "changeset",
-    "gen:docs": "rimraf docs && typedoc --options ./docs-gen/typedoc.json"
+    "gen:docs": "rimraf docs && typedoc --options ./docs-gen/typedoc.mjs"
   },
   "devDependencies": {
     "@changesets/cli": "2.29.8",
