@@ -17,7 +17,7 @@ export interface AddPhoneRequest {
    */
   is_verified?: boolean;
   /**
-   * Allows bypassing blacklist validation for the provided phone number.
+   * Allows bypassing blocklist validation for the provided phone number.
    * @type {boolean}
    * @memberof AddPhoneRequest
    */
