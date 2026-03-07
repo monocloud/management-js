@@ -29,6 +29,12 @@ export interface RefreshToken {
    */
   session_id?: string | null;
   /**
+   * Specifies whether the token is bound to the session.
+   * @type {boolean}
+   * @memberof RefreshToken
+   */
+  is_session_bound: boolean;
+  /**
    * The scopes granted to this token.
    * @type {string[]}
    * @memberof RefreshToken

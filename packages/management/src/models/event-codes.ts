@@ -426,6 +426,11 @@ export const EventCodes = {
    * Indicates that a refresh token grant was revoked.
    */
   RefreshTokenRevoked: 'refresh_token_revoked',
+
+  /**
+   * Indicates that a usage threshold was reached.
+   */
+  UsageThresholdReached: 'usage_threshold_reached',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
