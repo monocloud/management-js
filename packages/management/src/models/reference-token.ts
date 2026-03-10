@@ -29,6 +29,12 @@ export interface ReferenceToken {
    */
   session_id?: string | null;
   /**
+   * Specifies whether the token is bound to the session.
+   * @type {boolean}
+   * @memberof ReferenceToken
+   */
+  is_session_bound: boolean;
+  /**
    * The scopes granted to this token.
    * @type {string[]}
    * @memberof ReferenceToken

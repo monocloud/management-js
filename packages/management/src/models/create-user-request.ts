@@ -103,7 +103,7 @@ export interface CreateUserRequest {
    */
   skip_password_policy_checks?: boolean;
   /**
-   * Allows bypassing blacklist validation for the provided identifiers.
+   * Allows bypassing blocklist validation for the provided identifiers.
    * @type {boolean}
    * @memberof CreateUserRequest
    */

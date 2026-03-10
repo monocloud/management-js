@@ -35,11 +35,11 @@ export interface SignUpOptions {
    * @type {SignUpRestrictionsOptions}
    * @memberof SignUpOptions
    */
-  whitelist: SignUpRestrictionsOptions;
+  allowlist: SignUpRestrictionsOptions;
   /**
    * Blocklist of identifiers disallowed during sign-up.
    * @type {SignUpRestrictionsOptions}
    * @memberof SignUpOptions
    */
-  blacklist: SignUpRestrictionsOptions;
+  blocklist: SignUpRestrictionsOptions;
 }
