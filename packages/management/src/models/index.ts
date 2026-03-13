@@ -20,6 +20,7 @@ export * from './ban-trust-store-certificate-request';
 export * from './banned-certificate';
 export * from './banned-certificate-type';
 export * from './certificate-revocation';
+export * from './change-password-request';
 export * from './claim-resource';
 export * from './client';
 export * from './client-group';

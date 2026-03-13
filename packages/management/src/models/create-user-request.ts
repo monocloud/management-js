@@ -44,6 +44,7 @@ export interface CreateUserRequest {
   password?: string | null;
   /**
    * A pre-hashed password value. Useful during migrations to avoid forcing a password reset.
+   * @warning When provided, password validation and password policy requirements are not enforced. The hash is stored as-is.
    * @type {string}
    * @memberof CreateUserRequest
    */
