@@ -8,6 +8,7 @@ import {
   AddEmailRequest,
   AddPhoneRequest,
   AuthorizationCode,
+  ChangePasswordRequest,
   CreateUserRequest,
   DisableUserRequest,
   ExternalAuthenticatorDisconnectRequest,
@@ -656,6 +657,31 @@ export class UsersClient extends MonoCloudClientBase {
     request.body = resetPasswordRequest;
 
     return this.processRequest<ResetPasswordResponse>(request);
+  }
+
+  /**
+   * @summary Change password
+   * @description Replaces the user\'s existing password after validating the current password. Accepts either plaintext input or a pre-computed hash generated with a supported algorithm for the new password.
+   * @param {string} userId The unique identifier of the user.
+   * @param {ChangePasswordRequest} changePasswordRequest The request payload used to change the user\'s password.
+   * @returns User - The password was changed successfully
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   */
+  public changePassword(
+    userId: string,
+    changePasswordRequest: ChangePasswordRequest
+  ): Promise<MonoCloudResponse<User>> {
+    const url = `/users/{user_id}/password/change`.replace(
+      `{${'user_id'}}`,
+      encodeURIComponent(String(userId))
+    );
+
+    const request: MonoCloudRequest = { method: 'PUT', url };
+
+    request.body = changePasswordRequest;
+
+    return this.processRequest<User>(request);
   }
 
   /**
