@@ -6,14 +6,12 @@
 export interface PasskeyAuthenticatorOptions {
   /**
    * Specifies whether users can sign in using passkeys.
-   * @note Pro plan subscription required to use Passkeys.
    * @type {boolean}
    * @memberof PasskeyAuthenticatorOptions
    */
   enable_sign_in: boolean;
   /**
    * Specifies whether new users can sign up using passkeys.
-   * @note Pro plan subscription required to use Passkeys.
    * @type {boolean}
    * @memberof PasskeyAuthenticatorOptions
    */
