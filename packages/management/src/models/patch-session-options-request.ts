@@ -1,4 +1,4 @@
-import { ExpirationTypes } from './expiration-types';
+import { SessionExpirationTypes } from './session-expiration-types';
 import { SessionPersistenceModes } from './session-persistence-modes';
 
 /**
@@ -15,10 +15,10 @@ export interface PatchSessionOptionsRequest {
   persistence_mode?: SessionPersistenceModes;
   /**
    * Determines whether the session expiration is extended on activity (sliding) or expires at a fixed time (absolute).
-   * @type {ExpirationTypes}
+   * @type {SessionExpirationTypes}
    * @memberof PatchSessionOptionsRequest
    */
-  expiration_type?: ExpirationTypes;
+  expiration_type?: SessionExpirationTypes;
   /**
    * The session lifetime applied when using sliding expiration (in minutes). Each qualifying user interaction renews the session up to the absolute limit.
    * @type {number}

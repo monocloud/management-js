@@ -5,33 +5,33 @@ import {
   MonoCloudRequest,
 } from '@monocloud/management-core';
 import {
-  Client,
-  ClientGroup,
-  CreateClientRequest,
+  Application,
+  ApplicationGroup,
+  CreateApplicationRequest,
   CreateSecretRequest,
-  PatchClientRequest,
+  PatchApplicationRequest,
   Secret,
 } from '../models';
 
 export class ClientsClient extends MonoCloudClientBase {
   /**
-   * @summary List clients
-   * @description Retrieves a paginated list of clients. Optional query parameters allow searching, filtering, and sorting the results.
+   * @summary List applications
+   * @description Retrieves a paginated list of applications. Optional query parameters allow searching, filtering, and sorting the results.
    * @param {number} [page] The page number to retrieve.
    * @param {number} [size] The number of client applications to return per page.
    * @param {string} [filter] Optional Lucene-style filter expression used to search by attributes.
    * @param {string} [sort] Sort expression in the format `field:direction`, where direction is `1` for ascending or `-1` for descending. Supported fields include - `client_name` and `creation_time`
-   * @returns Client[] - The clients were retrieved successfully
+   * @returns Application[] - The applications were retrieved successfully
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    */
-  public getAllClients(
+  public getAllApplications(
     page?: number,
     size?: number,
     filter?: string,
     sort?: string
-  ): Promise<MonoCloudPageResponse<Client[]>> {
-    const url = `/clients`;
+  ): Promise<MonoCloudPageResponse<Application[]>> {
+    const url = `/applications`;
 
     const request: MonoCloudRequest = { method: 'GET', url };
 
@@ -53,84 +53,86 @@ export class ClientsClient extends MonoCloudClientBase {
       request.queryParams.sort = String(sort);
     }
 
-    return this.processPaginatedRequest<Client[]>(request);
+    return this.processPaginatedRequest<Application[]>(request);
   }
 
   /**
-   * @summary Create a client
-   * @description Creates a new client application with the specified configuration, including redirect URIs, authentication flows, and access settings.
-   * @param {CreateClientRequest} createClientRequest The request payload used to create a client.
-   * @returns Client - The client was created successfully
+   * @summary Create a application
+   * @description Creates a new application application with the specified configuration, including redirect URIs, authentication flows, and access settings.
+   * @param {CreateApplicationRequest} createApplicationRequest The request payload used to create a application.
+   * @returns Application - The application was created successfully
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    */
-  public createClient(
-    createClientRequest: CreateClientRequest
-  ): Promise<MonoCloudResponse<Client>> {
-    const url = `/clients`;
+  public createApplication(
+    createApplicationRequest: CreateApplicationRequest
+  ): Promise<MonoCloudResponse<Application>> {
+    const url = `/applications`;
 
     const request: MonoCloudRequest = { method: 'POST', url };
 
-    request.body = createClientRequest;
+    request.body = createApplicationRequest;
 
-    return this.processRequest<Client>(request);
+    return this.processRequest<Application>(request);
   }
 
   /**
-   * @summary Retrieve a client
-   * @description Retrieves detailed information for the specified client.
-   * @param {string} clientId The unique identifier of the client.
-   * @returns Client - The client was retrieved successfully
+   * @summary Retrieve a application
+   * @description Retrieves detailed information for the specified application.
+   * @param {string} clientId The unique identifier of the application.
+   * @returns Application - The application was retrieved successfully
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    */
-  public findClientById(clientId: string): Promise<MonoCloudResponse<Client>> {
-    const url = `/clients/{client_id}`.replace(
+  public findApplicationById(
+    clientId: string
+  ): Promise<MonoCloudResponse<Application>> {
+    const url = `/applications/{client_id}`.replace(
       `{${'client_id'}}`,
       encodeURIComponent(String(clientId))
     );
 
     const request: MonoCloudRequest = { method: 'GET', url };
 
-    return this.processRequest<Client>(request);
+    return this.processRequest<Application>(request);
   }
 
   /**
-   * @summary Update a client
-   * @description Applies a partial update to the specified client. Only fields included in the request are updated.
-   * @param {string} clientId The unique identifier of the client.
-   * @param {PatchClientRequest} patchClientRequest The request payload used to update a client.
-   * @returns Client - The client was updated successfully
+   * @summary Update a application
+   * @description Applies a partial update to the specified application. Only fields included in the request are updated.
+   * @param {string} clientId The unique identifier of the application.
+   * @param {PatchApplicationRequest} patchApplicationRequest The request payload used to update a application.
+   * @returns Application - The application was updated successfully
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    */
-  public patchClient(
+  public patchApplication(
     clientId: string,
-    patchClientRequest: PatchClientRequest
-  ): Promise<MonoCloudResponse<Client>> {
-    const url = `/clients/{client_id}`.replace(
+    patchApplicationRequest: PatchApplicationRequest
+  ): Promise<MonoCloudResponse<Application>> {
+    const url = `/applications/{client_id}`.replace(
       `{${'client_id'}}`,
       encodeURIComponent(String(clientId))
     );
 
     const request: MonoCloudRequest = { method: 'PATCH', url };
 
-    request.body = patchClientRequest;
+    request.body = patchApplicationRequest;
 
-    return this.processRequest<Client>(request);
+    return this.processRequest<Application>(request);
   }
 
   /**
-   * @summary Delete a client
-   * @description Permanently deletes the specified client.
+   * @summary Delete a application
+   * @description Permanently deletes the specified application.
    * @warning This operation is irreversible.
-   * @param {string} clientId The unique identifier of the client.
-   * @returns The client was deleted successfully
+   * @param {string} clientId The unique identifier of the application.
+   * @returns The application was deleted successfully
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    */
-  public deleteClient(clientId: string): Promise<MonoCloudResponse<null>> {
-    const url = `/clients/{client_id}`.replace(
+  public deleteApplication(clientId: string): Promise<MonoCloudResponse<null>> {
+    const url = `/applications/{client_id}`.replace(
       `{${'client_id'}}`,
       encodeURIComponent(String(clientId))
     );
@@ -141,17 +143,17 @@ export class ClientsClient extends MonoCloudClientBase {
   }
 
   /**
-   * @summary List client secrets
-   * @description Retrieves a list of secrets associated with the client.
-   * @param {string} clientId The unique identifier of the client.
-   * @returns Secret[] - The client secrets were retrieved successfully
+   * @summary List application secrets
+   * @description Retrieves a list of secrets associated with the application.
+   * @param {string} clientId The unique identifier of the application.
+   * @returns Secret[] - The application secrets were retrieved successfully
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    */
-  public getAllClientSecrets(
+  public getAllApplicationSecrets(
     clientId: string
   ): Promise<MonoCloudResponse<Secret[]>> {
-    const url = `/clients/{client_id}/secrets`.replace(
+    const url = `/applications/{client_id}/secrets`.replace(
       `{${'client_id'}}`,
       encodeURIComponent(String(clientId))
     );
@@ -162,19 +164,19 @@ export class ClientsClient extends MonoCloudClientBase {
   }
 
   /**
-   * @summary Create a client secret
-   * @description Creates a new secret credential for the specified client, which can be used to authenticate the client when requesting tokens.
-   * @param {string} clientId The unique identifier of the client.
-   * @param {CreateSecretRequest} createSecretRequest The request payload used to create a client secret.
-   * @returns Secret - The client secret was created successfully
+   * @summary Create a application secret
+   * @description Creates a new secret credential for the specified application, which can be used to authenticate the application when requesting tokens.
+   * @param {string} clientId The unique identifier of the application.
+   * @param {CreateSecretRequest} createSecretRequest The request payload used to create a application secret.
+   * @returns Secret - The application secret was created successfully
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    */
-  public createClientSecret(
+  public createApplicationSecret(
     clientId: string,
     createSecretRequest: CreateSecretRequest
   ): Promise<MonoCloudResponse<Secret>> {
-    const url = `/clients/{client_id}/secrets`.replace(
+    const url = `/applications/{client_id}/secrets`.replace(
       `{${'client_id'}}`,
       encodeURIComponent(String(clientId))
     );
@@ -187,19 +189,19 @@ export class ClientsClient extends MonoCloudClientBase {
   }
 
   /**
-   * @summary Retrieve a client secret
-   * @description Retrieves detailed information for the specified client secret.
-   * @param {string} clientId The unique identifier of the client.
-   * @param {string} secretId The unique identifier of the client secret.
-   * @returns Secret - The client secret was retrieved successfully
+   * @summary Retrieve a application secret
+   * @description Retrieves detailed information for the specified application secret.
+   * @param {string} clientId The unique identifier of the application.
+   * @param {string} secretId The unique identifier of the application secret.
+   * @returns Secret - The application secret was retrieved successfully
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    */
-  public findClientSecretById(
+  public findApplicationSecretById(
     clientId: string,
     secretId: string
   ): Promise<MonoCloudResponse<Secret>> {
-    const url = `/clients/{client_id}/secrets/{secret_id}`
+    const url = `/applications/{client_id}/secrets/{secret_id}`
       .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)))
       .replace(`{${'secret_id'}}`, encodeURIComponent(String(secretId)));
 
@@ -209,20 +211,20 @@ export class ClientsClient extends MonoCloudClientBase {
   }
 
   /**
-   * @summary Delete a client secret
-   * @description Permanently deletes the specified client secret.
+   * @summary Delete a application secret
+   * @description Permanently deletes the specified application secret.
    * @warning This operation is irreversible. Any applications using this secret will immediately fail authentication.
-   * @param {string} clientId The unique identifier of the client.
-   * @param {string} secretId The unique identifier of the client secret.
-   * @returns The client secret was deleted successfully
+   * @param {string} clientId The unique identifier of the application.
+   * @param {string} secretId The unique identifier of the application secret.
+   * @returns The application secret was deleted successfully
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    */
-  public deleteClientSecret(
+  public deleteApplicationSecret(
     clientId: string,
     secretId: string
   ): Promise<MonoCloudResponse<null>> {
-    const url = `/clients/{client_id}/secrets/{secret_id}`
+    const url = `/applications/{client_id}/secrets/{secret_id}`
       .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)))
       .replace(`{${'secret_id'}}`, encodeURIComponent(String(secretId)));
 
@@ -232,23 +234,23 @@ export class ClientsClient extends MonoCloudClientBase {
   }
 
   /**
-   * @summary List client\'s groups
-   * @description Retrieves a paginated list of groups associated with the client. Optional query parameters allow sorting of the results.
-   * @param {string} clientId The unique identifier of the client.
+   * @summary List application\'s groups
+   * @description Retrieves a paginated list of groups associated with the application. Optional query parameters allow sorting of the results.
+   * @param {string} clientId The unique identifier of the application.
    * @param {number} [page] The page number to retrieve.
    * @param {number} [size] The number of groups to return per page.
    * @param {string} [sort] Sort expression in the format `field:direction`, where direction is `1` for ascending or `-1` for descending. Supported fields include - `creation_time`.
-   * @returns ClientGroup[] - The client\&#39;s group associations were retrieved successfully
+   * @returns ApplicationGroup[] - The application\&#39;s group associations were retrieved successfully
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    */
-  public getAllClientGroups(
+  public getAllApplicationGroups(
     clientId: string,
     page?: number,
     size?: number,
     sort?: string
-  ): Promise<MonoCloudPageResponse<ClientGroup[]>> {
-    const url = `/clients/{client_id}/groups`.replace(
+  ): Promise<MonoCloudPageResponse<ApplicationGroup[]>> {
+    const url = `/applications/{client_id}/groups`.replace(
       `{${'client_id'}}`,
       encodeURIComponent(String(clientId))
     );
@@ -269,46 +271,46 @@ export class ClientsClient extends MonoCloudClientBase {
       request.queryParams.sort = String(sort);
     }
 
-    return this.processPaginatedRequest<ClientGroup[]>(request);
+    return this.processPaginatedRequest<ApplicationGroup[]>(request);
   }
 
   /**
-   * @summary Retrieve a client group
-   * @description Retrieves information about the specified group and its association with the client.
-   * @param {string} clientId The unique identifier of the client.
+   * @summary Retrieve a application group
+   * @description Retrieves information about the specified group and its association with the application.
+   * @param {string} clientId The unique identifier of the application.
    * @param {string} groupId The unique identifier of the group.
-   * @returns ClientGroup - The client\&#39;s group association was retrieved successfully
+   * @returns ApplicationGroup - The application\&#39;s group association was retrieved successfully
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    */
-  public findClientGroup(
+  public findApplicationGroup(
     clientId: string,
     groupId: string
-  ): Promise<MonoCloudResponse<ClientGroup>> {
-    const url = `/clients/{client_id}/groups/{group_id}`
+  ): Promise<MonoCloudResponse<ApplicationGroup>> {
+    const url = `/applications/{client_id}/groups/{group_id}`
       .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)))
       .replace(`{${'group_id'}}`, encodeURIComponent(String(groupId)));
 
     const request: MonoCloudRequest = { method: 'GET', url };
 
-    return this.processRequest<ClientGroup>(request);
+    return this.processRequest<ApplicationGroup>(request);
   }
 
   /**
-   * @summary Assign a group to a client
-   * @description Associates a group with the client and enforces group-based access control — only members of this group are permitted to access the application.
+   * @summary Assign a group to a application
+   * @description Associates a group with the application and enforces group-based access control — only members of this group are permitted to access the application.
    * @note Access to this endpoint requires an active ScaleX subscription.
-   * @param {string} clientId The unique identifier of the client.
+   * @param {string} clientId The unique identifier of the application.
    * @param {string} groupId The unique identifier of the group.
-   * @returns The group was assigned to the client successfully
+   * @returns The group was assigned to the application successfully
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    */
-  public assignGroupToClient(
+  public assignGroupToApplication(
     clientId: string,
     groupId: string
   ): Promise<MonoCloudResponse<null>> {
-    const url = `/clients/{client_id}/groups/{group_id}`
+    const url = `/applications/{client_id}/groups/{group_id}`
       .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)))
       .replace(`{${'group_id'}}`, encodeURIComponent(String(groupId)));
 
@@ -318,19 +320,19 @@ export class ClientsClient extends MonoCloudClientBase {
   }
 
   /**
-   * @summary Remove a client from a group
-   * @description Removes the specified client from the group. After removal, the group will no longer grant access or permissions to this client.
-   * @param {string} clientId The unique identifier of the client.
+   * @summary Remove a application from a group
+   * @description Removes the specified application from the group. After removal, the group will no longer grant access or permissions to this application.
+   * @param {string} clientId The unique identifier of the application.
    * @param {string} groupId The unique identifier of the group.
-   * @returns The client was removed from the group successfully
+   * @returns The application was removed from the group successfully
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    */
-  public removeGroupFromClient(
+  public removeGroupFromApplication(
     clientId: string,
     groupId: string
   ): Promise<MonoCloudResponse<null>> {
-    const url = `/clients/{client_id}/groups/{group_id}`
+    const url = `/applications/{client_id}/groups/{group_id}`
       .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)))
       .replace(`{${'group_id'}}`, encodeURIComponent(String(groupId)));
 
@@ -340,25 +342,25 @@ export class ClientsClient extends MonoCloudClientBase {
   }
 
   /**
-   * @summary List clients in group
-   * @description Retrieves a paginated list of clients that are assigned to the specified group. Optional query parameters allow searching, filtering, and sorting the results.
+   * @summary List applications in group
+   * @description Retrieves a paginated list of applications that are assigned to the specified group. Optional query parameters allow searching, filtering, and sorting the results.
    * @param {string} groupId The unique identifier of the group.
    * @param {number} [page] The page number to retrieve.
    * @param {number} [size] The number of client applications to return per page.
    * @param {string} [filter] Optional Lucene-style filter expression used to search by attributes.
    * @param {string} [sort] Sort expression in the format `field:direction`, where direction is `1` for ascending or `-1` for descending. Supported fields include - `client_name` and `creation_time`
-   * @returns Client[] - The clients assigned to the group were retrieved successfully
+   * @returns Application[] - The applications assigned to the group were retrieved successfully
    * @throws {MonoCloudException}
    * @memberof ClientsClient
    */
-  public getAllGroupAssignedClients(
+  public getAllGroupAssignedApplications(
     groupId: string,
     page?: number,
     size?: number,
     filter?: string,
     sort?: string
-  ): Promise<MonoCloudPageResponse<Client[]>> {
-    const url = `/clients/groups/{group_id}/assigned`.replace(
+  ): Promise<MonoCloudPageResponse<Application[]>> {
+    const url = `/applications/groups/{group_id}/assigned`.replace(
       `{${'group_id'}}`,
       encodeURIComponent(String(groupId))
     );
@@ -383,6 +385,6 @@ export class ClientsClient extends MonoCloudClientBase {
       request.queryParams.sort = String(sort);
     }
 
-    return this.processPaginatedRequest<Client[]>(request);
+    return this.processPaginatedRequest<Application[]>(request);
   }
 }

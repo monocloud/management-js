@@ -30,12 +30,14 @@ export interface PatchApiResourceRequest {
   audience?: string;
   /**
    * Specifies whether access tokens issued for this resource must be exclusive and not shared with other API resources.
+   * @note ScaleX subscription required to use resource isolation.
    * @type {boolean}
    * @memberof PatchApiResourceRequest
    */
   require_exclusive_token?: boolean;
   /**
    * Specifies whether access tokens issued for this resource may include identity scopes, allowing them to be used with identity-related endpoints such as `UserInfo`.
+   * @note ScaleX subscription required to use resource isolation.
    * @type {boolean}
    * @memberof PatchApiResourceRequest
    */

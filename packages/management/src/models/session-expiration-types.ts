@@ -4,7 +4,7 @@
  * @enum {string}
  */
 
-export const ExpirationTypes = {
+export const SessionExpirationTypes = {
   /**
    * Sessions use a sliding expiration model. Each successful interaction with the authorization server extends the session lifetime (up to the configured absolute session lifetime).
    */
@@ -17,5 +17,5 @@ export const ExpirationTypes = {
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export type ExpirationTypes =
-  (typeof ExpirationTypes)[keyof typeof ExpirationTypes];
+export type SessionExpirationTypes =
+  (typeof SessionExpirationTypes)[keyof typeof SessionExpirationTypes];
