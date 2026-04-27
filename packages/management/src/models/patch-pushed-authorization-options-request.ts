@@ -6,13 +6,14 @@
 export interface PatchPushedAuthorizationOptionsRequest {
   /**
    * Specifies whether Pushed Authorization Requests (PAR) are enabled for the tenant.
+   * @note Secure+ subscription required to use Pushed Authorization Requests (PAR).
    * @type {boolean}
    * @memberof PatchPushedAuthorizationOptionsRequest
    */
   enable_pushed_authorization_requests?: boolean;
   /**
    * Specifies whether Pushed Authorization Requests (PAR) are required tenant-wide for all authorization requests.
-   * @note When enabled, this setting overrides any client-specific PAR configuration and enforces PAR usage for all clients within the tenant.
+   * @note When enabled, this setting overrides any client-specific PAR configuration and enforces PAR usage for all clients within the tenant.  Secure+ subscription required to use Pushed Authorization Requests (PAR).
    * @type {boolean}
    * @memberof PatchPushedAuthorizationOptionsRequest
    */

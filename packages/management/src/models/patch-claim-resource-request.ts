@@ -23,12 +23,6 @@ export interface PatchClaimResourceRequest {
    */
   show_in_discovery_document?: boolean;
   /**
-   * The unique name of the claim.
-   * @type {string}
-   * @memberof PatchClaimResourceRequest
-   */
-  name?: string;
-  /**
    * Specifies the expression or attribute path used to derive the claim value from the user profile or identity context.
    * @type {string}
    * @memberof PatchClaimResourceRequest
