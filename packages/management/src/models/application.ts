@@ -69,6 +69,13 @@ export interface Application {
    */
   logo_uri?: string | null;
   /**
+   * Indicates whether the consents are enabled for the client.
+   * @note Secure+ subscription required to use consents.
+   * @type {boolean}
+   * @memberof Application
+   */
+  enable_consent: boolean;
+  /**
    * Controls whether users are prompted to review and approve requested permissions.
    * @note Secure+ subscription required to use consents.
    * @type {boolean}
@@ -77,7 +84,7 @@ export interface Application {
   require_consent: boolean;
   /**
    * Always prompts users for consent when requesting offline (refresh token) access.
-   * @note This setting applies even if the user previously chose to remember their consent.
+   * @note This setting applies even if the user previously chose to remember their consent.  Secure+ subscription required to use consents.
    * @type {boolean}
    * @memberof Application
    */
@@ -90,6 +97,7 @@ export interface Application {
   remember_consent: RememberConsentTypes;
   /**
    * Allows end users to choose which requested scopes to grant on the consent screen.
+   * @note Secure+ subscription required to use consents.
    * @type {boolean}
    * @memberof Application
    */
@@ -138,6 +146,7 @@ export interface Application {
   require_pushed_authorization_requests: boolean;
   /**
    * Allows the client to use any redirect URI when using Pushed Authorization Requests (PAR), instead of being limited to the configured redirect URI list.
+   * @note Secure+ subscription required to use Pushed Authorization Requests (PAR).
    * @type {boolean}
    * @memberof Application
    */
@@ -178,6 +187,7 @@ export interface Application {
   front_channel_logout_uri?: string | null;
   /**
    * Indicates whether the user’s session identifier should be included when invoking the front-channel logout URI.
+   * @note Pro plan subscription required to use front-channel logout.
    * @type {boolean}
    * @memberof Application
    */
@@ -191,6 +201,7 @@ export interface Application {
   back_channel_logout_uri?: string | null;
   /**
    * Indicates whether the user’s session identifier should be included when invoking the back-channel logout URI.
+   * @note Secure+ subscription required to use back-channel logout.
    * @type {boolean}
    * @memberof Application
    */
@@ -235,6 +246,7 @@ export interface Application {
   authorization_code_lifetime: number;
   /**
    * Specifies the validity period for stored user consent (in seconds). Set to `0` to allow consent to remain valid indefinitely.
+   * @note Secure+ subscription required to use consents.
    * @type {number}
    * @memberof Application
    */

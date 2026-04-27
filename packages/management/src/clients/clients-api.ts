@@ -322,6 +322,7 @@ export class ClientsClient extends MonoCloudClientBase {
   /**
    * @summary Remove a application from a group
    * @description Removes the specified application from the group. After removal, the group will no longer grant access or permissions to this application.
+   * @note Access to this endpoint requires an active ScaleX subscription.
    * @param {string} clientId The unique identifier of the application.
    * @param {string} groupId The unique identifier of the group.
    * @returns The application was removed from the group successfully

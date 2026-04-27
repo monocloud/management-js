@@ -23,12 +23,6 @@ export interface PatchApiResourceRequest {
    */
   description?: string | null;
   /**
-   * Audience value that will be included in issued access tokens for this API resource.
-   * @type {string}
-   * @memberof PatchApiResourceRequest
-   */
-  audience?: string;
-  /**
    * Specifies whether access tokens issued for this resource must be exclusive and not shared with other API resources.
    * @note ScaleX subscription required to use resource isolation.
    * @type {boolean}

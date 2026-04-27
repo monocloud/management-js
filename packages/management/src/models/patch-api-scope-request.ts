@@ -23,12 +23,6 @@ export interface PatchApiScopeRequest {
    */
   show_in_discovery_document?: boolean;
   /**
-   * The unique name of the scope. This is the value a client will use for the scope parameter in the authorize request.
-   * @type {string}
-   * @memberof PatchApiScopeRequest
-   */
-  name?: string;
-  /**
    * Specifies whether the scope is mandatory and cannot be de-selected by the user on the consent screen.
    * @type {boolean}
    * @memberof PatchApiScopeRequest
