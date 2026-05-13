@@ -1,5 +1,12 @@
 # @monocloud/management
 
+## 0.2.6
+
+### Patch Changes
+
+- fa8c021: Refactor environment variable names for consistency in MonoCloudManagementClient
+  - @monocloud/management-core@0.2.6
+
 ## 0.2.5
 
 ### Patch Changes
