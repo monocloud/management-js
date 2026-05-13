@@ -54,11 +54,14 @@ export class MonoCloudManagementClient {
     options?: MonoCloudConfig,
     fetcher?: Fetcher
   ): MonoCloudManagementClient {
-    const envTimeout = parseInt(process.env.MC_MANAGEMENT_TIMEOUT ?? '', 10);
+    const envTimeout = parseInt(
+      process.env.MONOCLOUD_MANAGEMENT_TIMEOUT ?? '',
+      10
+    );
 
     const opt: MonoCloudConfig = {
-      domain: options?.domain ?? process.env.MC_MANAGEMENT_DOMAIN ?? '',
-      apiKey: options?.apiKey ?? process.env.MC_MANAGEMENT_API_KEY ?? '',
+      domain: options?.domain ?? process.env.MONOCLOUD_MANAGEMENT_DOMAIN ?? '',
+      apiKey: options?.apiKey ?? process.env.MONOCLOUD_MANAGEMENT_API_KEY ?? '',
       config: options?.config ?? {
         timeout:
           (options?.config?.timeout ??
