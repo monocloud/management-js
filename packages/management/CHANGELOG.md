@@ -1,5 +1,12 @@
 # @monocloud/management
 
+## 0.2.7
+
+### Patch Changes
+
+- a6e67a6: - Add network zones, API access policies, and S3 trust store sources to management SDK
+  - @monocloud/management-core@0.2.7
+
 ## 0.2.6
 
 ### Patch Changes
