@@ -303,19 +303,19 @@ export const EventCodes = {
   ApiResourceSecretDeleted: 'api_resource_secret_deleted',
 
   /**
-   * Indicates that a client was granted access to an API resource.
+   * Indicates that an API access policy was created.
    */
-  ApiResourceClientCreated: 'api_resource_client_created',
+  ApiAccessPolicyCreated: 'api_access_policy_created',
 
   /**
-   * Indicates that a client's access configuration for an API resource was updated.
+   * Indicates that an API access policy was updated.
    */
-  ApiResourceClientUpdated: 'api_resource_client_updated',
+  ApiAccessPolicyUpdated: 'api_access_policy_updated',
 
   /**
-   * Indicates that a client's access to an API resource was removed.
+   * Indicates that an API access policy was deleted.
    */
-  ApiResourceClientRemoved: 'api_resource_client_removed',
+  ApiAccessPolicyDeleted: 'api_access_policy_deleted',
 
   /**
    * Indicates that a trust store was created.
@@ -431,6 +431,21 @@ export const EventCodes = {
    * Indicates that a usage threshold was reached.
    */
   UsageThresholdReached: 'usage_threshold_reached',
+
+  /**
+   * Indicates that a network zone was created.
+   */
+  NetworkZoneCreated: 'network_zone_created',
+
+  /**
+   * Indicates that a network zone was updated.
+   */
+  NetworkZoneUpdated: 'network_zone_updated',
+
+  /**
+   * Indicates that a network zone was deleted.
+   */
+  NetworkZoneDeleted: 'network_zone_deleted',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare

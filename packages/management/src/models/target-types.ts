@@ -101,6 +101,11 @@ export const TargetTypes = {
   ApiScope: 'api_scope',
 
   /**
+   * A Network Zone.
+   */
+  NetworkZone: 'network_zone',
+
+  /**
    * A cryptographic key material.
    */
   KeyMaterial: 'key_material',
@@ -109,6 +114,11 @@ export const TargetTypes = {
    * The system.
    */
   System: 'system',
+
+  /**
+   * An API access policy.
+   */
+  ApiAccessPolicy: 'api_access_policy',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare

@@ -5,17 +5,21 @@ import {
   MonoCloudRequest,
 } from '@monocloud/management-core';
 import {
+  AdvancedApiAccessPolicy,
+  ApiAccessPolicy,
   ApiResource,
-  ApiResourceClient,
   ApiScope,
+  BasicApiAccessPolicy,
   ClaimResource,
-  CreateApiResourceClientRequest,
+  CreateApiAccessAdvancedPolicyRequest,
+  CreateApiAccessBasicPolicyRequest,
   CreateApiResourceRequest,
   CreateApiScopeRequest,
   CreateClaimResourceRequest,
   CreateScopeRequest,
   CreateSecretRequest,
-  PatchApiResourceClientRequest,
+  PatchApiAccessAdvancedPolicyRequest,
+  PatchApiAccessBasicPolicyRequest,
   PatchApiResourceRequest,
   PatchApiScopeRequest,
   PatchClaimResourceRequest,
@@ -389,23 +393,23 @@ export class ResourcesClient extends MonoCloudClientBase {
   }
 
   /**
-   * @summary List API resource client access
-   * @description Retrieves a paginated list of client access entries for the specified API resource. Optional query parameters allow sorting of the results.
+   * @summary List API access policies
+   * @description Retrieves a paginated list of API access policies (both basic and advanced) for the specified API resource. Optional query parameters allow sorting of the results.
    * @param {string} apiId The unique identifier of the API resource.
    * @param {number} [page] The page number to retrieve.
-   * @param {number} [size] The number of API–client access entries to return per page.
-   * @param {string} [sort] Sort expression in the format `field:direction`, where direction is `1` for ascending or `-1` for descending. Supported fields include - `client_id`, `creation_time` and `last_updated`
-   * @returns ApiResourceClient[] - The API resource client access entries were retrieved successfully
+   * @param {number} [size] The number of API access policies to return per page.
+   * @param {string} [sort] Sort expression in the format `field:direction`, where direction is `1` for ascending or `-1` for descending. Supported fields include - `name`, `type`, `is_permitted`, `creation_time` and `last_updated`
+   * @returns ApiAccessPolicy[] - The API access policies were retrieved successfully
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    */
-  public getAllApiResourceClients(
+  public getAllApiAccessPolicies(
     apiId: string,
     page?: number,
     size?: number,
     sort?: string
-  ): Promise<MonoCloudPageResponse<ApiResourceClient[]>> {
-    const url = `/resources/api_resources/{api_id}/clients`.replace(
+  ): Promise<MonoCloudPageResponse<ApiAccessPolicy[]>> {
+    const url = `/resources/api_resources/{api_id}/policies`.replace(
       `{${'api_id'}}`,
       encodeURIComponent(String(apiId))
     );
@@ -426,140 +430,222 @@ export class ResourcesClient extends MonoCloudClientBase {
       request.queryParams.sort = String(sort);
     }
 
-    return this.processPaginatedRequest<ApiResourceClient[]>(request);
+    return this.processPaginatedRequest<ApiAccessPolicy[]>(request);
   }
 
   /**
-   * @summary List API resource access for a client
-   * @description Retrieves a paginated list of API resource access entries associated with the specified client. Optional query parameters allow sorting of the results.
-   * @param {string} clientId The unique identifier of the client.
-   * @param {number} [page] The page number to retrieve.
-   * @param {number} [size] The number of API–client access entries to return per page.
-   * @param {string} [sort] Sort expression in the format `field:direction`, where direction is `1` for ascending or `-1` for descending. Supported fields include - `client_id`, `creation_time` and `last_updated`
-   * @returns ApiResourceClient[] - The client API resource access entries were retrieved successfully
-   * @throws {MonoCloudException}
-   * @memberof ResourcesClient
-   */
-  public getAllClientApiResources(
-    clientId: string,
-    page?: number,
-    size?: number,
-    sort?: string
-  ): Promise<MonoCloudPageResponse<ApiResourceClient[]>> {
-    const url = `/resources/api_resources/clients/{client_id}`.replace(
-      `{${'client_id'}}`,
-      encodeURIComponent(String(clientId))
-    );
-
-    const request: MonoCloudRequest = { method: 'GET', url };
-
-    request.queryParams = {};
-
-    if (page !== undefined && page !== null) {
-      request.queryParams.page = String(page);
-    }
-
-    if (size !== undefined && size !== null) {
-      request.queryParams.size = String(size);
-    }
-
-    if (sort !== undefined && sort !== null) {
-      request.queryParams.sort = String(sort);
-    }
-
-    return this.processPaginatedRequest<ApiResourceClient[]>(request);
-  }
-
-  /**
-   * @summary Create API resource client access
-   * @description Creates an access entry between a client and an API resource, authorizing the client to request access tokens for the resource.
+   * @summary Create a basic API access policy
+   * @description Creates a new basic API access policy for the specified API resource using structured conditions.
    * @param {string} apiId The unique identifier of the API resource.
-   * @param {string} clientId The unique identifier of the client.
-   * @param {CreateApiResourceClientRequest} createApiResourceClientRequest The request payload used to create an access entry authorizing the client for the API resource.
-   * @returns ApiResourceClient - The API resource client access entry was created successfully
+   * @param {CreateApiAccessBasicPolicyRequest} createApiAccessBasicPolicyRequest The request payload used to create the policy.
+   * @returns BasicApiAccessPolicy - The policy was created successfully
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    */
-  public createApiResourceClient(
+  public createApiAccessBasicPolicy(
     apiId: string,
-    clientId: string,
-    createApiResourceClientRequest: CreateApiResourceClientRequest
-  ): Promise<MonoCloudResponse<ApiResourceClient>> {
-    const url = `/resources/api_resources/{api_id}/clients/{client_id}`
-      .replace(`{${'api_id'}}`, encodeURIComponent(String(apiId)))
-      .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)));
+    createApiAccessBasicPolicyRequest: CreateApiAccessBasicPolicyRequest
+  ): Promise<MonoCloudResponse<BasicApiAccessPolicy>> {
+    const url = `/resources/api_resources/{api_id}/policies/basic`.replace(
+      `{${'api_id'}}`,
+      encodeURIComponent(String(apiId))
+    );
 
     const request: MonoCloudRequest = { method: 'POST', url };
 
-    request.body = createApiResourceClientRequest;
+    request.body = createApiAccessBasicPolicyRequest;
 
-    return this.processRequest<ApiResourceClient>(request);
+    return this.processRequest<BasicApiAccessPolicy>(request);
   }
 
   /**
-   * @summary Retrieve an API resource client access entry
-   * @description Retrieves detailed information for an access entry that authorizes a specific client for the specified API resource.
+   * @summary Retrieve a basic API access policy
+   * @description Retrieves detailed information for the specified basic API access policy.
    * @param {string} apiId The unique identifier of the API resource.
-   * @param {string} clientId The unique identifier of the client.
-   * @returns ApiResourceClient - The API resource client access entry was retrieved successfully
+   * @param {string} policyId The unique identifier of the API access policy.
+   * @returns BasicApiAccessPolicy - The basic API access policy was retrieved successfully
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    */
-  public findApiResourceClient(
+  public findApiAccessBasicPolicyById(
     apiId: string,
-    clientId: string
-  ): Promise<MonoCloudResponse<ApiResourceClient>> {
-    const url = `/resources/api_resources/{api_id}/clients/{client_id}`
+    policyId: string
+  ): Promise<MonoCloudResponse<BasicApiAccessPolicy>> {
+    const url = `/resources/api_resources/{api_id}/policies/basic/{policy_id}`
       .replace(`{${'api_id'}}`, encodeURIComponent(String(apiId)))
-      .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)));
+      .replace(`{${'policy_id'}}`, encodeURIComponent(String(policyId)));
 
     const request: MonoCloudRequest = { method: 'GET', url };
 
-    return this.processRequest<ApiResourceClient>(request);
+    return this.processRequest<BasicApiAccessPolicy>(request);
   }
 
   /**
-   * @summary Update an API resource client access entry
-   * @description Updates the scope restrictions for an existing client access entry.
+   * @summary Update a basic API access policy
+   * @description Applies a partial update to the specified basic API access policy. Only fields included in the request are updated.
    * @param {string} apiId The unique identifier of the API resource.
-   * @param {string} clientId The unique identifier of the client.
-   * @param {PatchApiResourceClientRequest} patchApiResourceClientRequest The request payload used to update the client access configuration.
-   * @returns ApiResourceClient - The API resource client access entry was updated successfully
+   * @param {string} policyId The unique identifier of the API access policy.
+   * @param {PatchApiAccessBasicPolicyRequest} patchApiAccessBasicPolicyRequest The request payload used to update the policy.
+   * @returns BasicApiAccessPolicy - The basic API access policy was updated successfully
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    */
-  public patchApiResourceClient(
+  public patchApiAccessBasicPolicy(
     apiId: string,
-    clientId: string,
-    patchApiResourceClientRequest: PatchApiResourceClientRequest
-  ): Promise<MonoCloudResponse<ApiResourceClient>> {
-    const url = `/resources/api_resources/{api_id}/clients/{client_id}`
+    policyId: string,
+    patchApiAccessBasicPolicyRequest: PatchApiAccessBasicPolicyRequest
+  ): Promise<MonoCloudResponse<BasicApiAccessPolicy>> {
+    const url = `/resources/api_resources/{api_id}/policies/basic/{policy_id}`
       .replace(`{${'api_id'}}`, encodeURIComponent(String(apiId)))
-      .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)));
+      .replace(`{${'policy_id'}}`, encodeURIComponent(String(policyId)));
 
     const request: MonoCloudRequest = { method: 'PATCH', url };
 
-    request.body = patchApiResourceClientRequest;
+    request.body = patchApiAccessBasicPolicyRequest;
 
-    return this.processRequest<ApiResourceClient>(request);
+    return this.processRequest<BasicApiAccessPolicy>(request);
   }
 
   /**
-   * @summary Remove an API resource client access entry
-   * @description Removes the access entry that authorizes the specified client to request tokens for the API resource. After removal, the client will no longer be permitted to access this API resource.
+   * @summary Delete a basic API access policy
+   * @description Permanently deletes the specified basic API access policy from the API resource.
+   * @warning This operation is irreversible.
    * @param {string} apiId The unique identifier of the API resource.
-   * @param {string} clientId The unique identifier of the client.
-   * @returns The API resource client access entry was removed successfully
+   * @param {string} policyId The unique identifier of the API access policy.
+   * @returns The basic API access policy was deleted successfully
    * @throws {MonoCloudException}
    * @memberof ResourcesClient
    */
-  public removeApiResourceClient(
+  public deleteApiAccessBasicPolicy(
     apiId: string,
-    clientId: string
+    policyId: string
   ): Promise<MonoCloudResponse<null>> {
-    const url = `/resources/api_resources/{api_id}/clients/{client_id}`
+    const url = `/resources/api_resources/{api_id}/policies/basic/{policy_id}`
       .replace(`{${'api_id'}}`, encodeURIComponent(String(apiId)))
-      .replace(`{${'client_id'}}`, encodeURIComponent(String(clientId)));
+      .replace(`{${'policy_id'}}`, encodeURIComponent(String(policyId)));
+
+    const request: MonoCloudRequest = { method: 'DELETE', url };
+
+    return this.processRequest<null>(request);
+  }
+
+  /**
+   * @summary Convert a basic API access policy to an advanced policy
+   * @description Converts the specified basic API access policy into an advanced Cedar-authored policy in place. The policy ID is preserved, and the generated Cedar source becomes the starting point for further editing. Basic-only fields, such as clients and scopes, are discarded.
+   * @warning This operation is irreversible.
+   * @param {string} apiId The unique identifier of the API resource.
+   * @param {string} policyId The unique identifier of the basic API access policy to convert.
+   * @returns AdvancedApiAccessPolicy - The basic API access policy was converted successfully
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   */
+  public convertApiAccessBasicToAdvancedPolicy(
+    apiId: string,
+    policyId: string
+  ): Promise<MonoCloudResponse<AdvancedApiAccessPolicy>> {
+    const url =
+      `/resources/api_resources/{api_id}/policies/basic/{policy_id}/convert`
+        .replace(`{${'api_id'}}`, encodeURIComponent(String(apiId)))
+        .replace(`{${'policy_id'}}`, encodeURIComponent(String(policyId)));
+
+    const request: MonoCloudRequest = { method: 'POST', url };
+
+    return this.processRequest<AdvancedApiAccessPolicy>(request);
+  }
+
+  /**
+   * @summary Create an advanced API access policy
+   * @description Creates a new advanced API access policy for the specified API resource using raw Cedar policy source.
+   * @param {string} apiId The unique identifier of the API resource.
+   * @param {CreateApiAccessAdvancedPolicyRequest} createApiAccessAdvancedPolicyRequest The request payload used to create the policy.
+   * @returns AdvancedApiAccessPolicy - The policy was created successfully
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   */
+  public createApiAccessAdvancedPolicy(
+    apiId: string,
+    createApiAccessAdvancedPolicyRequest: CreateApiAccessAdvancedPolicyRequest
+  ): Promise<MonoCloudResponse<AdvancedApiAccessPolicy>> {
+    const url = `/resources/api_resources/{api_id}/policies/advanced`.replace(
+      `{${'api_id'}}`,
+      encodeURIComponent(String(apiId))
+    );
+
+    const request: MonoCloudRequest = { method: 'POST', url };
+
+    request.body = createApiAccessAdvancedPolicyRequest;
+
+    return this.processRequest<AdvancedApiAccessPolicy>(request);
+  }
+
+  /**
+   * @summary Retrieve a advanced API access policy
+   * @description Retrieves detailed information for the specified advanced API access policy.
+   * @param {string} apiId The unique identifier of the API resource.
+   * @param {string} policyId The unique identifier of the API access policy.
+   * @returns AdvancedApiAccessPolicy - The advanced API access policy was retrieved successfully
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   */
+  public findApiAccessAdvancedPolicyById(
+    apiId: string,
+    policyId: string
+  ): Promise<MonoCloudResponse<AdvancedApiAccessPolicy>> {
+    const url =
+      `/resources/api_resources/{api_id}/policies/advanced/{policy_id}`
+        .replace(`{${'api_id'}}`, encodeURIComponent(String(apiId)))
+        .replace(`{${'policy_id'}}`, encodeURIComponent(String(policyId)));
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    return this.processRequest<AdvancedApiAccessPolicy>(request);
+  }
+
+  /**
+   * @summary Update an advanced API access policy
+   * @description Applies a partial update to the specified advanced API access policy. Only fields included in the request are updated.
+   * @param {string} apiId The unique identifier of the API resource.
+   * @param {string} policyId The unique identifier of the API access policy.
+   * @param {PatchApiAccessAdvancedPolicyRequest} patchApiAccessAdvancedPolicyRequest The request payload used to update the policy.
+   * @returns AdvancedApiAccessPolicy - The advanced API access policy was updated successfully
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   */
+  public patchApiAccessAdvancedPolicy(
+    apiId: string,
+    policyId: string,
+    patchApiAccessAdvancedPolicyRequest: PatchApiAccessAdvancedPolicyRequest
+  ): Promise<MonoCloudResponse<AdvancedApiAccessPolicy>> {
+    const url =
+      `/resources/api_resources/{api_id}/policies/advanced/{policy_id}`
+        .replace(`{${'api_id'}}`, encodeURIComponent(String(apiId)))
+        .replace(`{${'policy_id'}}`, encodeURIComponent(String(policyId)));
+
+    const request: MonoCloudRequest = { method: 'PATCH', url };
+
+    request.body = patchApiAccessAdvancedPolicyRequest;
+
+    return this.processRequest<AdvancedApiAccessPolicy>(request);
+  }
+
+  /**
+   * @summary Delete an advanced API access policy
+   * @description Permanently deletes the specified advanced API access policy from the API resource.
+   * @warning This operation is irreversible.
+   * @param {string} apiId The unique identifier of the API resource.
+   * @param {string} policyId The unique identifier of the API access policy.
+   * @returns The advanced API access policy was deleted successfully
+   * @throws {MonoCloudException}
+   * @memberof ResourcesClient
+   */
+  public deleteApiAccessAdvancedPolicy(
+    apiId: string,
+    policyId: string
+  ): Promise<MonoCloudResponse<null>> {
+    const url =
+      `/resources/api_resources/{api_id}/policies/advanced/{policy_id}`
+        .replace(`{${'api_id'}}`, encodeURIComponent(String(apiId)))
+        .replace(`{${'policy_id'}}`, encodeURIComponent(String(policyId)));
 
     const request: MonoCloudRequest = { method: 'DELETE', url };
 

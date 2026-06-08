@@ -58,7 +58,7 @@ export class ClientsClient extends MonoCloudClientBase {
 
   /**
    * @summary Create a application
-   * @description Creates a new application application with the specified configuration, including redirect URIs, authentication flows, and access settings.
+   * @description Creates a new application with the specified configuration, including redirect URIs, authentication flows, and access settings.
    * @param {CreateApplicationRequest} createApplicationRequest The request payload used to create a application.
    * @returns Application - The application was created successfully
    * @throws {MonoCloudException}

@@ -3,6 +3,7 @@ export * from './clients-api';
 export * from './groups-api';
 export * from './keys-api';
 export * from './logs-api';
+export * from './network-zones-api';
 export * from './options-api';
 export * from './resources-api';
 export * from './trust-stores-api';

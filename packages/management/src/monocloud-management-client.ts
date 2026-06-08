@@ -5,6 +5,7 @@ import {
   GroupsClient,
   KeysClient,
   LogsClient,
+  NetworkZonesClient,
   OptionsClient,
   ResourcesClient,
   TrustStoresClient,
@@ -21,6 +22,8 @@ export class MonoCloudManagementClient {
   public readonly keys: KeysClient;
 
   public readonly logs: LogsClient;
+
+  public readonly networkZones: NetworkZonesClient;
 
   public readonly options: OptionsClient;
 
@@ -40,6 +43,8 @@ export class MonoCloudManagementClient {
     this.keys = new KeysClient(options, fetcher);
 
     this.logs = new LogsClient(options, fetcher);
+
+    this.networkZones = new NetworkZonesClient(options, fetcher);
 
     this.options = new OptionsClient(options, fetcher);
 
