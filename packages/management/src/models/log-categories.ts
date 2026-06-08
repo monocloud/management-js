@@ -59,6 +59,16 @@ export const LogCategories = {
    * Events related to group management and membership changes.
    */
   Groups: 'groups',
+
+  /**
+   * Events related to access policies.
+   */
+  Policies: 'policies',
+
+  /**
+   * Events related to network zones.
+   */
+  NetworkZones: 'network_zones',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare

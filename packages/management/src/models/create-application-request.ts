@@ -201,12 +201,12 @@ export interface CreateApplicationRequest {
    */
   back_channel_logout_session_required?: boolean;
   /**
-   * Binds issued tokens to the user\'s session. When enabled, all tokens and grants are automatically revoked when the user signs out or the session expires.
+   * Binds refresh tokens issued for the client to the user\'s session. When enabled, refresh tokens are automatically revoked when the user signs out or the session expires.
    * @note ScaleX subscription required to use session binding.
    * @type {boolean}
    * @memberof CreateApplicationRequest
    */
-  bind_tokens_to_session?: boolean;
+  bind_refresh_tokens_to_session?: boolean;
   /**
    * Allows the client to obtain refresh tokens using the `offline_access` scope.
    * @note Use only for trusted applications that can securely store long-lived tokens.
@@ -227,7 +227,7 @@ export interface CreateApplicationRequest {
    */
   identity_token_lifetime?: number;
   /**
-   * Specifies how long an access token remains valid (in seconds).
+   * Specifies how long access tokens issued without API resource scopes remain valid (in seconds). These tokens may only be used with the UserInfo endpoint.
    * @type {number}
    * @memberof CreateApplicationRequest
    */
@@ -283,7 +283,7 @@ export interface CreateApplicationRequest {
    */
   refresh_token_expiration?: RefreshTokenExpirationTypes;
   /**
-   * Specifies whether access tokens are issued as self-contained JWTs or as opaque references stored server-side.
+   * Specifies whether access tokens issued without API resource scopes are issued as self-contained JWTs or opaque reference tokens. These tokens may only be used with the UserInfo endpoint.
    * @type {AccessTokenTypes}
    * @memberof CreateApplicationRequest
    */
@@ -295,13 +295,6 @@ export interface CreateApplicationRequest {
    * @memberof CreateApplicationRequest
    */
   authenticator_restrictions?: Authenticators[];
-  /**
-   * Determines whether issued access tokens include a unique token identifier (jti).
-   * @note Recommended for auditing, correlation, and replay-detection.
-   * @type {boolean}
-   * @memberof CreateApplicationRequest
-   */
-  include_jwt_id?: boolean;
   /**
    * Defines custom claims issued to this client and embedded into access tokens for downstream APIs and resources.
    * @type {{ [key: string]: any; }}
