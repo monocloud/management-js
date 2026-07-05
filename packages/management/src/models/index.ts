@@ -74,6 +74,8 @@ export * from './external-authenticators';
 export * from './grant-types';
 export * from './group';
 export * from './group-types';
+export * from './http-feature-flag-response';
+export * from './http-set-feature-flag-request';
 export * from './http-user-address-request';
 export * from './icertificate-revocation';
 export * from './inetwork-zone';
