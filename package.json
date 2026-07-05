@@ -7,6 +7,8 @@
     "lint": "turbo run lint:es -- --fix && turbo run lint:ts",
     "test": "turbo run test",
     "changeset": "changeset",
+    "changeset:version": "changeset version && pnpm install --lockfile-only --engine-strict=false",
+    "changeset:publish": "changeset publish --no-git-tag",
     "gen:docs": "rimraf docs && typedoc --options ./docs-gen/typedoc.mjs"
   },
   "devDependencies": {
