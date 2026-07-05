@@ -62,8 +62,8 @@ jobs:
       - name: Detect version bump
         id: version_bumped
         run: |
-          CURRENT_VERSION=$(jq -r .version packages/core/package.json)
-          PREVIOUS_VERSION=$(git show HEAD^:packages/core/package.json | jq -r .version)
+          CURRENT_VERSION=$(git show "${{ github.sha }}:packages/core/package.json" | jq -r .version)
+          PREVIOUS_VERSION=$(git show "${{ github.sha }}^:packages/core/package.json" | jq -r .version)
 
           echo "Current version:  $CURRENT_VERSION"
           echo "Previous version: $PREVIOUS_VERSION"
@@ -71,16 +71,13 @@ jobs:
           if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]; then
             echo "bumped=true" >> "$GITHUB_OUTPUT"
             echo "version=$CURRENT_VERSION" >> "$GITHUB_OUTPUT"
+            case "$CURRENT_VERSION" in
+              *-*) echo "prerelease=true" >> "$GITHUB_OUTPUT" ;;
+              *) echo "prerelease=false" >> "$GITHUB_OUTPUT" ;;
+            esac
           else
             echo "bumped=false" >> "$GITHUB_OUTPUT"
           fi
-
-      - name: Extract version
-        if: steps.version_bumped.outputs.bumped == 'true'
-        uses: apexskier/github-semver-parse@v1
-        id: semver
-        with:
-          version: ${{ steps.version_bumped.outputs.version }}
 
       - name: Extract Core Changelog for Specific Version
         if: steps.version_bumped.outputs.bumped == 'true'
@@ -89,7 +86,7 @@ jobs:
           TARGET_VERSION: ${{ steps.version_bumped.outputs.version }}
           CHANGELOG_FILE: 'packages/core/CHANGELOG.md'
         run: |
-          LOG_CONTENT=$(sed -n "/^## $TARGET_VERSION\$/,/^## /{/^## $TARGET_VERSION\$/d; /^## /d; p;}" $CHANGELOG_FILE)
+          LOG_CONTENT=$(git show "${{ github.sha }}:$CHANGELOG_FILE" | sed -n "/^## $TARGET_VERSION\$/,/^## /{/^## $TARGET_VERSION\$/d; /^## /d; p;}")
           CLEAN_LOG_CONTENT=$(echo "$LOG_CONTENT" | sed 's/[ \t]*$//' | sed '/^$/d')
           echo "changelog_content<<EOF" >> $GITHUB_OUTPUT
           echo "$CLEAN_LOG_CONTENT" >> $GITHUB_OUTPUT
@@ -102,7 +99,7 @@ jobs:
           TARGET_VERSION: ${{ steps.version_bumped.outputs.version }}
           CHANGELOG_FILE: 'packages/management/CHANGELOG.md'
         run: |
-          LOG_CONTENT=$(sed -n "/^## $TARGET_VERSION\$/,/^## /{/^## $TARGET_VERSION\$/d; /^## /d; p;}" $CHANGELOG_FILE)
+          LOG_CONTENT=$(git show "${{ github.sha }}:$CHANGELOG_FILE" | sed -n "/^## $TARGET_VERSION\$/,/^## /{/^## $TARGET_VERSION\$/d; /^## /d; p;}")
           CLEAN_LOG_CONTENT=$(echo "$LOG_CONTENT" | sed 's/[ \t]*$//' | sed '/^$/d')
           echo "changelog_content<<EOF" >> $GITHUB_OUTPUT
           echo "$CLEAN_LOG_CONTENT" >> $GITHUB_OUTPUT
@@ -136,9 +133,10 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           tag: v${{ steps.version_bumped.outputs.version }}
-          prerelease: ${{ !!steps.semver.outputs.prerelease }}
+          prerelease: ${{ steps.version_bumped.outputs.prerelease == 'true' }}
           name: v${{ steps.version_bumped.outputs.version }}
           body: ${{ steps.build_body.outputs.body }}
+          skipIfReleaseExists: true
 
   snapshot:
     name: Create Snapshot Release
