@@ -39,6 +39,16 @@ export const SecretTypes = {
    * A shared secret used for JWT-based client assertion authentication.
    */
   JwtAssertionSharedSecret: 'jwt_assertion_shared_secret',
+
+  /**
+   * A SPIFFE ID matched against the SVID presented by the workload. May end with a `/*` wildcard matching any path under the prefix.
+   */
+  SpiffeId: 'spiffe_id',
+
+  /**
+   * A SPIFFE ID matched against the JWT-SVID assertion presented by the workload. May end with a `/*` wildcard matching any path under the prefix.
+   */
+  JwtSvidAssertion: 'jwt_svid_assertion',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare

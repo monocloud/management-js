@@ -6,9 +6,12 @@ import {
 import {
   AuthenticationOptions,
   CommunicationOptions,
+  CreateExternalAuthenticatorRequest,
   CreateSignUpCustomFieldRequest,
+  ExternalAuthenticator,
   PatchAuthenticationOptionsRequest,
   PatchCommunicationOptionsRequest,
+  PatchExternalAuthenticatorRequest,
   PatchSignUpCustomFieldRequest,
   SignUpCustomField,
 } from '../models';
@@ -133,7 +136,7 @@ export class OptionsClient extends MonoCloudClientBase {
    * @throws {MonoCloudException}
    * @memberof OptionsClient
    */
-  public findSignUpCustomFieldByName(
+  public findSignUpCustomField(
     claimName: string
   ): Promise<MonoCloudResponse<SignUpCustomField>> {
     const url =
@@ -190,6 +193,111 @@ export class OptionsClient extends MonoCloudClientBase {
         `{${'claim_name'}}`,
         encodeURIComponent(String(claimName))
       );
+
+    const request: MonoCloudRequest = { method: 'DELETE', url };
+
+    return this.processRequest<null>(request);
+  }
+
+  /**
+   * @summary List external authenticators
+   * @description Retrieves the list of configured external authenticators.
+   * @returns ExternalAuthenticator[] - The external authenticators were retrieved successfully
+   * @throws {MonoCloudException}
+   * @memberof OptionsClient
+   */
+  public getAllExternalAuthenticators(): Promise<
+    MonoCloudResponse<ExternalAuthenticator[]>
+  > {
+    const url = `/options/authentication/external`;
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    return this.processRequest<ExternalAuthenticator[]>(request);
+  }
+
+  /**
+   * @summary Configure an external authenticator
+   * @description Configures a new external authenticator that end-users can authenticate with.
+   * @param {CreateExternalAuthenticatorRequest} createExternalAuthenticatorRequest The request payload used to configure the external authenticator.
+   * @returns ExternalAuthenticator - The external authenticator was configured successfully
+   * @throws {MonoCloudException}
+   * @memberof OptionsClient
+   */
+  public createExternalAuthenticator(
+    createExternalAuthenticatorRequest: CreateExternalAuthenticatorRequest
+  ): Promise<MonoCloudResponse<ExternalAuthenticator>> {
+    const url = `/options/authentication/external`;
+
+    const request: MonoCloudRequest = { method: 'POST', url };
+
+    request.body = createExternalAuthenticatorRequest;
+
+    return this.processRequest<ExternalAuthenticator>(request);
+  }
+
+  /**
+   * @summary Retrieve an external authenticator
+   * @description Retrieves detailed information for the specified external authenticator.
+   * @param {string} name The name of the external authenticator.
+   * @returns ExternalAuthenticator - The external authenticator was retrieved successfully
+   * @throws {MonoCloudException}
+   * @memberof OptionsClient
+   */
+  public findExternalAuthenticator(
+    name: string
+  ): Promise<MonoCloudResponse<ExternalAuthenticator>> {
+    const url = `/options/authentication/external/{name}`.replace(
+      `{${'name'}}`,
+      encodeURIComponent(String(name))
+    );
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    return this.processRequest<ExternalAuthenticator>(request);
+  }
+
+  /**
+   * @summary Update an external authenticator
+   * @description Applies a partial update to the specified external authenticator. Only fields included in the request are updated.
+   * @param {string} name The name of the external authenticator.
+   * @param {PatchExternalAuthenticatorRequest} patchExternalAuthenticatorRequest The request payload used to update the external authenticator.
+   * @returns ExternalAuthenticator - The external authenticator was updated successfully
+   * @throws {MonoCloudException}
+   * @memberof OptionsClient
+   */
+  public patchExternalAuthenticator(
+    name: string,
+    patchExternalAuthenticatorRequest: PatchExternalAuthenticatorRequest
+  ): Promise<MonoCloudResponse<ExternalAuthenticator>> {
+    const url = `/options/authentication/external/{name}`.replace(
+      `{${'name'}}`,
+      encodeURIComponent(String(name))
+    );
+
+    const request: MonoCloudRequest = { method: 'PATCH', url };
+
+    request.body = patchExternalAuthenticatorRequest;
+
+    return this.processRequest<ExternalAuthenticator>(request);
+  }
+
+  /**
+   * @summary Delete an external authenticator
+   * @description Permanently deletes the specified external authenticator.
+   * @warning This operation is irreversible.
+   * @param {string} name The name of the external authenticator.
+   * @returns The external authenticator was deleted successfully
+   * @throws {MonoCloudException}
+   * @memberof OptionsClient
+   */
+  public deleteExternalAuthenticator(
+    name: string
+  ): Promise<MonoCloudResponse<null>> {
+    const url = `/options/authentication/external/{name}`.replace(
+      `{${'name'}}`,
+      encodeURIComponent(String(name))
+    );
 
     const request: MonoCloudRequest = { method: 'DELETE', url };
 

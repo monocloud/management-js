@@ -68,6 +68,12 @@ export interface AdvancedApiAccessPolicy {
    */
   last_updated: number;
   /**
+   * Specifies the current version of the policy. Incremented on every update.
+   * @type {number}
+   * @memberof AdvancedApiAccessPolicy
+   */
+  revision: number;
+  /**
    * Optional denial message returned to the client when this policy rejects a token request. If unset, a generic denial message is returned.
    * @type {string}
    * @memberof AdvancedApiAccessPolicy

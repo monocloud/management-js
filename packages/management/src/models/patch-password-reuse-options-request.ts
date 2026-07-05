@@ -8,7 +8,6 @@ import { PasswordRestrictionModes } from './password-restriction-modes';
 export interface PatchPasswordReuseOptionsRequest {
   /**
    * Specifies the password reuse control policy, defining whether reuse is limited by time, count, both, or unrestricted.
-   * @note Pro plan required to configure password reuse options.
    * @type {PasswordRestrictionModes}
    * @memberof PatchPasswordReuseOptionsRequest
    */
