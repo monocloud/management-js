@@ -40,6 +40,7 @@ export interface PatchPasswordAuthenticatorOptionsRequest {
   strength?: PatchPasswordStrengthOptionsRequest;
   /**
    * Password reuse policy configuration.
+   * @note Pro plan required to customize password history options.
    * @type {PatchPasswordReuseOptionsRequest}
    * @memberof PatchPasswordAuthenticatorOptionsRequest
    */

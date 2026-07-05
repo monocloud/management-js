@@ -15,18 +15,21 @@ export interface PatchSignUpOptionsRequest {
   show_terms_and_privacy_policy?: boolean;
   /**
    * Require the user to explicitly agree to the Terms and/or Privacy Policy.
+   * @note Pro plan required to enable Terms and Privacy Policy.
    * @type {boolean}
    * @memberof PatchSignUpOptionsRequest
    */
   require_explicit_user_agreement?: boolean;
   /**
    * The URL of the Privacy Policy shown during sign-up.
+   * @note Pro plan required to enable Terms and Privacy Policy.
    * @type {string}
    * @memberof PatchSignUpOptionsRequest
    */
   privacy_url?: string | null;
   /**
    * The URL of the Terms of Service shown during sign-up.
+   * @note Pro plan required to enable Terms and Privacy Policy.
    * @type {string}
    * @memberof PatchSignUpOptionsRequest
    */

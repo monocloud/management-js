@@ -353,6 +353,16 @@ export const EventCodes = {
   TrustStoreCertificateUnbanned: 'trust_store_certificate_unbanned',
 
   /**
+   * Indicates that an SVID was banned in the trust store.
+   */
+  TrustStoreSvidBanned: 'trust_store_svid_banned',
+
+  /**
+   * Indicates that a previously banned SVID was unbanned in the trust store.
+   */
+  TrustStoreSvidUnbanned: 'trust_store_svid_unbanned',
+
+  /**
    * Indicates that a client application was created.
    */
   ClientCreated: 'client_created',

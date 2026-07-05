@@ -62,14 +62,14 @@ const managementClient = MonoCloudManagementClient.init({
 > [!CAUTION]
 > Do not hardcode your API key. It is recommended to load it from an environment variable. See: [`monocloud-management-client`](https://github.com/monocloud/management-js/blob/main/packages/management/src/monocloud-management-client.ts)
 
-#### Example - Get all clients
+#### Example - Get all applications
 
 ```typescript
-const result = await managementClient.clients.getAllClients(
+const result = await managementClient.clients.getAllApplications(
   1,
   10,
   "dashboard",
-  "name:1"
+  "client_name:1"
 );
 ```
 

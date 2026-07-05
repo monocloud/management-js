@@ -62,6 +62,12 @@ export interface BasicApiAccessPolicy {
    */
   last_updated: number;
   /**
+   * Specifies the current version of the policy. Incremented on every update.
+   * @type {number}
+   * @memberof BasicApiAccessPolicy
+   */
+  revision: number;
+  /**
    * The unique identifier of the client this policy applies to.
    * @type {string}
    * @memberof BasicApiAccessPolicy
