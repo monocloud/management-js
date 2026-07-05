@@ -1,5 +1,12 @@
 # @monocloud/management
 
+## 0.2.8
+
+### Patch Changes
+
+- 3424290: Updated to the latest API version
+  - @monocloud/management-core@0.2.8
+
 ## 0.2.7
 
 ### Patch Changes
