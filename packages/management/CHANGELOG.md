@@ -1,5 +1,13 @@
 # @monocloud/management
 
+## 0.2.9
+
+### Patch Changes
+
+- 49e0579: CI fix release
+- Updated dependencies [49e0579]
+  - @monocloud/management-core@0.2.9
+
 ## 0.2.8
 
 ### Patch Changes
