@@ -59,21 +59,6 @@ export const IdPs = {
    * Xero identity provider
    */
   Xero: 'xero',
-
-  /**
-   * Custom OIDC identity provider
-   */
-  CustomOidc: 'custom_oidc',
-
-  /**
-   * Custom enterprise identity provider
-   */
-  CustomEnterprise: 'custom_enterprise',
-
-  /**
-   * Microsoft Entra ID identity provider
-   */
-  EntraOidc: 'entra_oidc',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
