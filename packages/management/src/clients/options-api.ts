@@ -133,7 +133,7 @@ export class OptionsClient extends MonoCloudClientBase {
    * @throws {MonoCloudException}
    * @memberof OptionsClient
    */
-  public findSignUpCustomField(
+  public findSignUpCustomFieldByName(
     claimName: string
   ): Promise<MonoCloudResponse<SignUpCustomField>> {
     const url =
