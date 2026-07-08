@@ -54,21 +54,6 @@ export const ExternalAuthenticators = {
    * Sign in with Xero
    */
   Xero: 'xero',
-
-  /**
-   * Sign in with a custom OIDC provider
-   */
-  CustomOidc: 'custom_oidc',
-
-  /**
-   * Sign in with a custom enterprise SSO connection
-   */
-  CustomEnterprise: 'custom_enterprise',
-
-  /**
-   * Sign in with Microsoft Entra ID (enterprise)
-   */
-  EntraOidc: 'entra_oidc',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
