@@ -1,5 +1,3 @@
-import { ExternalAuthenticators } from './external-authenticators';
-
 /**
  * External Authenticator Disconnect Request: Removes an existing external identity provider connection from a user account.
  * @export
@@ -7,11 +5,11 @@ import { ExternalAuthenticators } from './external-authenticators';
  */
 export interface ExternalAuthenticatorDisconnectRequest {
   /**
-   * The external authentication provider to disconnect from the user account.
-   * @type {ExternalAuthenticators}
+   * The external provider to disconnect from the user account.
+   * @type {string}
    * @memberof ExternalAuthenticatorDisconnectRequest
    */
-  authenticator: ExternalAuthenticators;
+  provider: string;
   /**
    * The user identifier assigned by the external authentication provider.
    * @type {string}

@@ -7,7 +7,13 @@ import { ExternalAuthenticators } from './external-authenticators';
  */
 export interface UserExternalProvider {
   /**
-   * The authenticator associated with this connection.
+   * The provider associated with this connection.
+   * @type {string}
+   * @memberof UserExternalProvider
+   */
+  provider: string;
+  /**
+   * The authenticator used by the provider.
    * @type {ExternalAuthenticators}
    * @memberof UserExternalProvider
    */

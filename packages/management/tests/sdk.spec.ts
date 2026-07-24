@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import nock from 'nock';
 import {
-  ExternalAuthenticators,
-  ExternalAuthenticatorDisconnectRequest,
   MonoCloudIdentityValidationException,
   MonoCloudKeyValidationException,
   MonoCloudServerException,
@@ -37,13 +35,15 @@ describe('MonoCloud Identity SDK Tests', () => {
   test('Create should send correct enum', async () => {
     nockInst
       .post('/api/users/user/external_authenticator/disconnect', {
-        authenticator: 'apple',
+        provider: 'apple',
+        provider_user_id: 'user_id',
       })
       .reply(200, {});
 
     await client.users.externalAuthenticatorDisconnect('user', {
-      authenticator: ExternalAuthenticators.Apple,
-    } as ExternalAuthenticatorDisconnectRequest);
+      provider: 'apple',
+      provider_user_id: 'user_id',
+    });
 
     nockInst.done();
   });

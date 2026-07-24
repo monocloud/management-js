@@ -62,11 +62,47 @@ export interface LogRequest {
    */
   certificate_issuer?: string | null;
   /**
+   * The SHA-256 thumbprint of the client certificate used in the request.
+   * @type {string}
+   * @memberof LogRequest
+   */
+  certificate_thumbprint?: string | null;
+  /**
+   * The serial number of the client certificate used in the request.
+   * @type {string}
+   * @memberof LogRequest
+   */
+  certificate_serial_number?: string | null;
+  /**
    * The SAN URIs of the client certificate used in the request.
    * @type {string[]}
    * @memberof LogRequest
    */
-  san_uris?: string[] | null;
+  certificate_san_uris?: string[] | null;
+  /**
+   * The SAN DNS names of the client certificate used in the request.
+   * @type {string[]}
+   * @memberof LogRequest
+   */
+  certificate_san_dns_names?: string[] | null;
+  /**
+   * The SAN IP addresses of the client certificate used in the request.
+   * @type {string[]}
+   * @memberof LogRequest
+   */
+  certificate_san_ip_addresses?: string[] | null;
+  /**
+   * The SAN email addresses of the client certificate used in the request.
+   * @type {string[]}
+   * @memberof LogRequest
+   */
+  certificate_san_emails?: string[] | null;
+  /**
+   * The SAN UPNs of the client certificate used in the request.
+   * @type {string[]}
+   * @memberof LogRequest
+   */
+  certificate_san_upns?: string[] | null;
   /**
    * The SPIFFE ID of the SVID (X.509-SVID or JWT-SVID) that authenticated the request.
    * @type {string}
