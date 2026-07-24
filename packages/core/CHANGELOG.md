@@ -1,5 +1,7 @@
 # @monocloud/management-core
 
+## 0.2.11
+
 ## 0.2.10
 
 ### Patch Changes
