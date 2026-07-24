@@ -1,5 +1,12 @@
 # @monocloud/management
 
+## 0.2.11
+
+### Patch Changes
+
+- d4e601f: Updated SDKs to latest APIs
+  - @monocloud/management-core@0.2.11
+
 ## 0.2.10
 
 ### Patch Changes
