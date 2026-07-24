@@ -1,4 +1,3 @@
-import { UserConnection } from './user-connection';
 import { UserEmail } from './user-email';
 import { UserExternalProvider } from './user-external-provider';
 import { UserPasskey } from './user-passkey';
@@ -23,12 +22,6 @@ export interface User {
    * @memberof User
    */
   disabled: boolean;
-  /**
-   * Connections linked to this user.
-   * @type {UserConnection[]}
-   * @memberof User
-   */
-  connections: UserConnection[];
   /**
    * Claims associated with the user.
    * @type {{ [key: string]: any; }}

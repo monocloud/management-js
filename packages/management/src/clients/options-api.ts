@@ -6,9 +6,12 @@ import {
 import {
   AuthenticationOptions,
   CommunicationOptions,
+  CreateExternalProviderRequest,
   CreateSignUpCustomFieldRequest,
+  ExternalProvider,
   PatchAuthenticationOptionsRequest,
   PatchCommunicationOptionsRequest,
+  PatchExternalProviderRequest,
   PatchSignUpCustomFieldRequest,
   SignUpCustomField,
 } from '../models';
@@ -133,7 +136,7 @@ export class OptionsClient extends MonoCloudClientBase {
    * @throws {MonoCloudException}
    * @memberof OptionsClient
    */
-  public findSignUpCustomFieldByName(
+  public findSignUpCustomField(
     claimName: string
   ): Promise<MonoCloudResponse<SignUpCustomField>> {
     const url =
@@ -190,6 +193,111 @@ export class OptionsClient extends MonoCloudClientBase {
         `{${'claim_name'}}`,
         encodeURIComponent(String(claimName))
       );
+
+    const request: MonoCloudRequest = { method: 'DELETE', url };
+
+    return this.processRequest<null>(request);
+  }
+
+  /**
+   * @summary List external authenticators
+   * @description Retrieves the list of configured external authenticators.
+   * @returns ExternalProvider[] - The external authenticators were retrieved successfully
+   * @throws {MonoCloudException}
+   * @memberof OptionsClient
+   */
+  public getAllExternalAuthenticators(): Promise<
+    MonoCloudResponse<ExternalProvider[]>
+  > {
+    const url = `/options/authentication/external`;
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    return this.processRequest<ExternalProvider[]>(request);
+  }
+
+  /**
+   * @summary Configure an external provider
+   * @description Configures a new external provider that end-users can authenticate with.
+   * @param {CreateExternalProviderRequest} createExternalProviderRequest The request payload used to configure the external provider.
+   * @returns ExternalProvider - The external provider was configured successfully
+   * @throws {MonoCloudException}
+   * @memberof OptionsClient
+   */
+  public createExternalProvider(
+    createExternalProviderRequest: CreateExternalProviderRequest
+  ): Promise<MonoCloudResponse<ExternalProvider>> {
+    const url = `/options/authentication/external`;
+
+    const request: MonoCloudRequest = { method: 'POST', url };
+
+    request.body = createExternalProviderRequest;
+
+    return this.processRequest<ExternalProvider>(request);
+  }
+
+  /**
+   * @summary Retrieve an external provider
+   * @description Retrieves detailed information for the specified external provider.
+   * @param {string} providerName The name of the external provider.
+   * @returns ExternalProvider - The external provider was retrieved successfully
+   * @throws {MonoCloudException}
+   * @memberof OptionsClient
+   */
+  public findExternalProvider(
+    providerName: string
+  ): Promise<MonoCloudResponse<ExternalProvider>> {
+    const url = `/options/authentication/external/{provider_name}`.replace(
+      `{${'provider_name'}}`,
+      encodeURIComponent(String(providerName))
+    );
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    return this.processRequest<ExternalProvider>(request);
+  }
+
+  /**
+   * @summary Update an external provider
+   * @description Applies a partial update to the specified external provider. Only fields included in the request are updated.
+   * @param {string} providerName The name of the external provider.
+   * @param {PatchExternalProviderRequest} patchExternalProviderRequest The request payload used to update the external provider.
+   * @returns ExternalProvider - The external provider was updated successfully
+   * @throws {MonoCloudException}
+   * @memberof OptionsClient
+   */
+  public patchExternalProvider(
+    providerName: string,
+    patchExternalProviderRequest: PatchExternalProviderRequest
+  ): Promise<MonoCloudResponse<ExternalProvider>> {
+    const url = `/options/authentication/external/{provider_name}`.replace(
+      `{${'provider_name'}}`,
+      encodeURIComponent(String(providerName))
+    );
+
+    const request: MonoCloudRequest = { method: 'PATCH', url };
+
+    request.body = patchExternalProviderRequest;
+
+    return this.processRequest<ExternalProvider>(request);
+  }
+
+  /**
+   * @summary Delete an external provider
+   * @description Permanently deletes the specified external provider.
+   * @warning This operation is irreversible.
+   * @param {string} providerName The name of the external provider.
+   * @returns The external provider was deleted successfully
+   * @throws {MonoCloudException}
+   * @memberof OptionsClient
+   */
+  public deleteExternalProvider(
+    providerName: string
+  ): Promise<MonoCloudResponse<null>> {
+    const url = `/options/authentication/external/{provider_name}`.replace(
+      `{${'provider_name'}}`,
+      encodeURIComponent(String(providerName))
+    );
 
     const request: MonoCloudRequest = { method: 'DELETE', url };
 

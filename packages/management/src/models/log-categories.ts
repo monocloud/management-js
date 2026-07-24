@@ -61,6 +61,11 @@ export const LogCategories = {
   Groups: 'groups',
 
   /**
+   * Events related to user grants and delegated permissions.
+   */
+  Grants: 'grants',
+
+  /**
    * Events related to access policies.
    */
   Policies: 'policies',

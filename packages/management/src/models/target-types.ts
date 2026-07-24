@@ -53,7 +53,7 @@ export const TargetTypes = {
   /**
    * An authenticator.
    */
-  Authenticator: 'authenticator',
+  ExternalProvider: 'external_provider',
 
   /**
    * An IP address.

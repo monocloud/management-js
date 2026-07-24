@@ -1,6 +1,5 @@
 import { AccessTokenTypes } from './access-token-types';
 import { ApplicationTypes } from './application-types';
-import { Authenticators } from './authenticators';
 import { GrantTypes } from './grant-types';
 import { RefreshTokenExpirationTypes } from './refresh-token-expiration-types';
 import { RefreshTokenUsageTypes } from './refresh-token-usage-types';
@@ -297,10 +296,10 @@ export interface Application {
   /**
    * Defines the authenticators users may use to sign in with this client. Leave empty to inherit the global authenticator policy.
    * @note Pro plan subscription required to enable authenticator restrictions.
-   * @type {Authenticators[]}
+   * @type {string[]}
    * @memberof Application
    */
-  authenticator_restrictions: Authenticators[];
+  authenticator_restrictions: string[];
   /**
    * Defines custom claims issued to this client and embedded into access tokens for downstream APIs and resources.
    * @type {{ [key: string]: any; }}
