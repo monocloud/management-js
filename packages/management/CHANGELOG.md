@@ -1,5 +1,12 @@
 # @monocloud/management
 
+## 0.3.0
+
+### Patch Changes
+
+- Updated dependencies [ca97c89]
+  - @monocloud/management-core@0.3.0
+
 ## 0.2.11
 
 ### Patch Changes
