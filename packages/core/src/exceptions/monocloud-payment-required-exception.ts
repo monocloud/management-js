@@ -1,12 +1,12 @@
 import { ProblemDetails } from '../models/problem-details';
-import { MonoCloudRequestException } from './monocloud-request-exception';
+import { MonoCloudCodedException } from './monocloud-coded-exception';
 
 /**
  * The MonoCloud Payment Required Exception
  * @export
  * @class MonoCloudPaymentRequiredException
  */
-export class MonoCloudPaymentRequiredException extends MonoCloudRequestException {
+export class MonoCloudPaymentRequiredException extends MonoCloudCodedException {
   /**
    * Initializes the MonoCloudPaymentRequiredException Class
    * @param response - The problem details returned from the server.

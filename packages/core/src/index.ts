@@ -1,4 +1,5 @@
 export { MonoCloudException } from './exceptions/monocloud-exception';
+export { MonoCloudCodedException } from './exceptions/monocloud-coded-exception';
 export { MonoCloudBadRequestException } from './exceptions/monocloud-bad-request-exception';
 export { MonoCloudConflictException } from './exceptions/monocloud-conflict-exception';
 export { MonoCloudIdentityValidationException } from './exceptions/monocloud-identity-validation-exception';

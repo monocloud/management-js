@@ -138,6 +138,22 @@ export abstract class MonoCloudClientBase {
     }
   }
 
+  /**
+   * Throws the exception the problem details map to.
+   *
+   * An sdk whose api reports errors it can throw something narrower for overrides this, and defers to the base
+   * mapping for everything else. What it throws has to extend {@link MonoCloudException}, or `processRequest`
+   * will discard it along with anything else it did not expect.
+   *
+   * @param problem - The problem details returned from the server.
+   * @internal
+   */
+  protected throwProblem(problem: ProblemDetails): never {
+    MonoCloudExceptionHandler.ThrowProblemErr(problem);
+
+    throw new MonoCloudException(problem.title ?? 'An Unknown Error Occured');
+  }
+
   private async HandleErrorResponse(response: Response): Promise<void> {
     const contentType = response.headers.get('content-type');
     if (contentType?.startsWith('application/problem+json')) {
@@ -158,7 +174,7 @@ export abstract class MonoCloudClientBase {
         throw new MonoCloudException('Invalid body');
       }
 
-      MonoCloudExceptionHandler.ThrowProblemErr(result);
+      this.throwProblem(result);
     }
 
     const respStrng = await response.text();

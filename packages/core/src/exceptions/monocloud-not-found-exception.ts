@@ -1,12 +1,12 @@
 import { ProblemDetails } from '../models/problem-details';
-import { MonoCloudRequestException } from './monocloud-request-exception';
+import { MonoCloudCodedException } from './monocloud-coded-exception';
 
 /**
  * The MonoCloud Not Found Exception
  * @export
  * @class MonoCloudNotFoundException
  */
-export class MonoCloudNotFoundException extends MonoCloudRequestException {
+export class MonoCloudNotFoundException extends MonoCloudCodedException {
   /**
    * Initializes the MonoCloudNotFoundException Class
    * @param response - The problem details returned from the server.

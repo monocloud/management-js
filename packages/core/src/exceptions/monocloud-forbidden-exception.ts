@@ -1,12 +1,12 @@
 import { ProblemDetails } from '../models/problem-details';
-import { MonoCloudRequestException } from './monocloud-request-exception';
+import { MonoCloudCodedException } from './monocloud-coded-exception';
 
 /**
  * The MonoCloud Forbidden Exception
  * @export
  * @class MonoCloudForbiddenException
  */
-export class MonoCloudForbiddenException extends MonoCloudRequestException {
+export class MonoCloudForbiddenException extends MonoCloudCodedException {
   /**
    * Initializes the MonoCloudForbiddenException Class
    * @param response - The problem details returned from the server.
