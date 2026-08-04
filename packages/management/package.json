@@ -1,6 +1,6 @@
 {
   "name": "@monocloud/management",
-  "version": "0.2.11",
+  "version": "0.3.0",
   "description": "MonoCloud Management API JavaScript Library",
   "keywords": [
     "monocloud",
