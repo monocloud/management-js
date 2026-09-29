@@ -4,13 +4,12 @@
   "compilerOptions": {
     "declaration": true,
     "declarationMap": false,
-    "downlevelIteration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
     "inlineSources": false,
     "isolatedModules": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Node16",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitAny": true,
@@ -27,7 +26,7 @@
     "strict": true,
     "target": "ES6",
     "noEmit": true,
-    "module": "commonjs",
+    "module": "Node16",
     "sourceMap": true,
     "lib": [
       "ES6"
