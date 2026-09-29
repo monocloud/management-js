@@ -25,3 +25,4 @@ export type { IdentityError } from './models/identity-error';
 export type { MonoCloudConfig } from './base/monocloud-config';
 export type { Fetcher } from './models/fetcher';
 export type { MonoCloudRequest } from './models/monocloud-request';
+export type { MonoCloudEvent } from './models/monocloud-event';

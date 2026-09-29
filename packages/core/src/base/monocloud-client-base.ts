@@ -10,6 +10,8 @@ import { KeyValidationProblemDetails } from '../models/key-validation-problem-de
 import { MonoCloudExceptionHandler } from '../exceptions/monocloud-exception-handler';
 import { MonoCloudRequest } from '../models/monocloud-request';
 import { Fetcher } from '../models/fetcher';
+import { MonoCloudEvent } from '../models/monocloud-event';
+import { readEventStream } from './read-event-stream';
 
 export abstract class MonoCloudClientBase {
   protected fetcher: Fetcher;
@@ -43,12 +45,22 @@ export abstract class MonoCloudClientBase {
       ): Promise<Response> => {
         const url = new URL(input, baseUrl);
 
-        const signal = AbortSignal.timeout(
-          configuration.config?.timeout ?? 10000
-        );
+        const signal =
+          init?.signal ??
+          AbortSignal.timeout(configuration.config?.timeout ?? 10000);
         signal.throwIfAborted();
 
-        const resp = await fetch(url.toString(), { ...init, headers, signal });
+        const requestHeaders = new Headers(headers);
+
+        new Headers(init?.headers).forEach((value, key) => {
+          requestHeaders.set(key, value);
+        });
+
+        const resp = await fetch(url.toString(), {
+          ...init,
+          headers: requestHeaders,
+          signal,
+        });
 
         return resp;
       };
@@ -93,6 +105,69 @@ export abstract class MonoCloudClientBase {
       }
 
       throw new MonoCloudException('Something went wrong.');
+    }
+  }
+
+  /**
+   * Opens a stream on iteration. Break the loop or abort the signal to disconnect.
+   * Server EOF ends the iterator; no automatic reconnection or JSON parsing occurs.
+   * Custom fetchers must preserve the supplied signal and Accept header.
+   */
+  protected async *processEventStream(
+    request: MonoCloudRequest,
+    signal?: AbortSignal
+  ): AsyncGenerator<MonoCloudEvent, void, unknown> {
+    const controller = new AbortController();
+    const streamSignal = signal
+      ? AbortSignal.any([signal, controller.signal])
+      : controller.signal;
+    let response: Response | undefined;
+
+    try {
+      streamSignal.throwIfAborted();
+
+      response = await this.fetcher(
+        this.buildUrl(request.url, request.queryParams),
+        {
+          method: request.method,
+          body: request.body ? JSON.stringify(request.body) : undefined,
+          headers: { Accept: 'text/event-stream' },
+          cache: 'no-store',
+          signal: streamSignal,
+        }
+      );
+
+      streamSignal.throwIfAborted();
+
+      if (!response.ok) {
+        await this.HandleErrorResponse(response);
+      }
+
+      const contentType = response.headers
+        .get('content-type')
+        ?.split(';')[0]
+        .trim()
+        .toLowerCase();
+
+      if (contentType !== 'text/event-stream' || !response.body) {
+        throw new MonoCloudException('Expected a text/event-stream response.');
+      }
+
+      yield* readEventStream(response.body, streamSignal);
+    } catch (error) {
+      streamSignal.throwIfAborted();
+
+      if (error instanceof MonoCloudException) {
+        throw error;
+      }
+
+      throw new MonoCloudException('Unable to read the event stream.');
+    } finally {
+      controller.abort();
+
+      if (response?.body && !response.body.locked) {
+        await response.body.cancel().catch(() => undefined);
+      }
     }
   }
 
