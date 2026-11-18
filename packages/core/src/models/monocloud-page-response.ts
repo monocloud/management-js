@@ -4,6 +4,7 @@ import { PageModel } from './page-model';
 export class MonoCloudPageResponse<
   TResult = unknown,
 > extends MonoCloudResponse<TResult> {
+  /** Pagination metadata parsed from the X-Pagination response header. */
   pageData: PageModel;
 
   constructor(

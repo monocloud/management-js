@@ -121,6 +121,52 @@ describe('MonoCloud Identity SDK Tests', () => {
     expect(result.pageData.has_previous).toBe(false);
   });
 
+  test.each([false, true])(
+    'preserves separate Set-Cookie headers (paginated: %s)',
+    async paginated => {
+      const cookies = [
+        '__Host-monocloud.fgpt=browser; Path=/; Secure; HttpOnly',
+        '__Host-monocloud.auth_id=flow; Path=/; Secure; HttpOnly',
+        'monocloud=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT',
+      ];
+      const headers = new Headers({ 'X-Request-Id': 'request-id' });
+      cookies.forEach(cookie => headers.append('Set-Cookie', cookie));
+      const upstream = new Response(
+        JSON.stringify(paginated ? [] : { user_id: '1234' }),
+        { headers }
+      );
+      const cookieClient = MonoCloudManagementClient.init(undefined, () =>
+        Promise.resolve(upstream)
+      );
+
+      const response = paginated
+        ? await cookieClient.users.getAllUsers()
+        : await cookieClient.users.findUserById('1234');
+
+      expect(response.headers['set-cookie']).toEqual(cookies);
+      expect(response.headers['x-request-id']).toBe('request-id');
+    }
+  );
+
+  test.each([
+    { cookies: [] },
+    { cookies: ['monocloud=session; Path=/; Secure; HttpOnly'] },
+  ])(
+    'preserves absent or single Set-Cookie headers: %j',
+    async ({ cookies }) => {
+      nockInst
+        .get('/api/users/1234')
+        .reply(200, {}, cookies.length ? { 'Set-Cookie': cookies } : {});
+
+      const response = await client.users.findUserById('1234');
+
+      expect(response.headers['set-cookie']).toEqual(
+        cookies.length ? cookies : undefined
+      );
+      nockInst.done();
+    }
+  );
+
   test('Identity error should handle correctly', async () => {
     nockInst.post('/api/users').reply(
       422,

@@ -88,6 +88,10 @@ export abstract class MonoCloudClientBase {
         headers[key] = value;
       });
 
+      if (response.headers.has('set-cookie')) {
+        headers['set-cookie'] = response.headers.getSetCookie();
+      }
+
       const resp = response.body ? await response.text() : null;
 
       return new MonoCloudResponse<T>(
@@ -191,6 +195,10 @@ export abstract class MonoCloudClientBase {
       response.headers.forEach((value, key) => {
         headers[key] = value;
       });
+
+      if (response.headers.has('set-cookie')) {
+        headers['set-cookie'] = response.headers.getSetCookie();
+      }
 
       const paginationData = this.resolvePaginationHeader(response.headers);
 
