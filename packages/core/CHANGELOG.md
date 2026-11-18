@@ -1,5 +1,11 @@
 # @monocloud/management-core
 
+## 0.4.1
+
+### Patch Changes
+
+- f64f07d: Preserve every Set-Cookie response header as a string array in `response.headers['set-cookie']`, including responses from paginated requests. Other headers remain strings. Server-side consumers can forward each cookie separately without losing authentication, browser-binding, or logout cookies, or splitting Expires dates on commas. Browsers still hide Set-Cookie from JavaScript. Add descriptions for configuration and response properties.
+
 ## 0.4.0
 
 ### Minor Changes
